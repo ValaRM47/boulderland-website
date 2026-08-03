@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>برنامه زمانی مسابقات | بلدرلند کاپ</title>
+<meta name="description" content="برنامه زمانی و جدول زمان‌بندی مسابقات سنگ‌نوردی بلدرلند کاپ — رده‌های نونهالان و نوجوانان به همراه ساعت پذیرش، مسابقه و فینال." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
+<style>
+/* ==========================================================================
+   بلدرلند کاپ — Time Table page (shares the Boulderland design system)
+   ========================================================================== */
+:root{
+  --sand:#e7ad72; --forest:#3c4b48; --moss:#3f6356; --cream:#e2c2a1;
+  --ink:#202927; --white:#fdfbf7; --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1040px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--sand);color:var(--forest)}
+.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;top:0;inset-inline:0;z-index:50;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease);padding:20px 0}
+header.nav.scrolled{background:rgba(32,41,39,.85);backdrop-filter:blur(14px);padding:12px 0;border-bottom:1px solid rgba(231,173,114,.14)}
+.nav-inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+/* logo sits centered; صفحه اصلی pins to the far right, ثبت نام to the far left (RTL) */
+.brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px}
+.brand .mark{width:50px;height:50px;display:grid;place-items:center;flex-shrink:0}
+.brand .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:12px 24px;border-radius:99px;transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--sand);color:var(--forest)}
+.btn-primary:hover{background:var(--cream);box-shadow:0 12px 30px -10px rgba(231,173,114,.6)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(231,173,114,.5)}
+.btn-ghost:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+@media(max-width:620px){
+  .nav-home{display:none}                                   /* hide صفحه اصلی on mobile */
+  .nav-inner{justify-content:center}                        /* center the register button */
+  .brand{left:auto;right:clamp(20px,5vw,48px);transform:translateY(-50%)}  /* pin logo to the right */
+  .nav-register{padding:11px 18px;font-size:14px}           /* a touch smaller so it clears the logo */
+}
+
+/* ============ HERO / HEADER ============ */
+.tt-hero{position:relative;min-height:56vh;display:flex;align-items:flex-end;padding:130px 0 56px;overflow:hidden}
+.tt-hero-img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center}
+.tt-hero-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(32,41,39,.96) 0%,rgba(32,41,39,.6) 55%,rgba(32,41,39,.7) 100%)}
+.tt-hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--sand);letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.tt-hero h1{font-weight:900;color:var(--white);font-size:clamp(38px,7vw,84px);line-height:.98;letter-spacing:-1px;margin-bottom:18px}
+.tt-hero h1 .accent{color:var(--sand)}
+.tt-hero p{max-width:600px;font-size:clamp(15px,2vw,19px);color:rgba(246,237,225,.85);font-weight:300}
+
+/* ============ SCHEDULE ============ */
+.schedule{padding:clamp(60px,9vw,110px) 0}
+.tt-block{margin-bottom:clamp(50px,7vw,86px)}
+.tt-block-head{display:flex;align-items:center;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+.tt-chip{font-size:13px;font-weight:800;color:var(--forest);background:var(--sand);padding:7px 16px;border-radius:99px;letter-spacing:.3px}
+.tt-block-head h2{font-size:clamp(28px,4.5vw,46px);font-weight:900;color:var(--white);letter-spacing:-.5px}
+.tt-block-sub{color:rgba(246,237,225,.6);font-size:15px;font-weight:300;margin-bottom:30px}
+
+.tt-subhead{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:800;color:var(--sand);letter-spacing:1px;text-transform:uppercase;margin:34px 0 16px}
+.tt-subhead::before{content:"";width:34px;height:2px;background:var(--sand)}
+
+.tt-table{display:flex;flex-direction:column;gap:12px}
+.tt-row{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:16px;align-items:center;background:var(--forest);border:1px solid rgba(231,173,114,.14);border-radius:16px;padding:16px 22px;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.tt-row:hover{border-color:rgba(231,173,114,.5);transform:translateY(-2px)}
+.tt-row .cat{font-weight:800;color:var(--white);font-size:16.5px}
+.tt-row .cat .grp{display:inline-block;margin-inline-start:8px;font-size:12.5px;font-weight:700;color:var(--sand);background:rgba(231,173,114,.12);padding:2px 10px;border-radius:99px;vertical-align:middle}
+.tt-cell{display:flex;flex-direction:column;gap:4px}
+.tt-cell .lbl{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--sand);text-transform:uppercase}
+.tt-cell .lbl svg{width:13px;height:13px;stroke:var(--sand);fill:none;stroke-width:2}
+.tt-cell .val{font-size:16px;font-weight:700;color:var(--white)}
+.tt-cell .val bdi{unicode-bidi:isolate}
+
+/* Finals */
+.tt-finals{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tt-final{position:relative;background:linear-gradient(150deg,rgba(231,173,114,.14),rgba(60,75,72,.4));border:1.5px solid var(--sand);border-radius:18px;padding:24px 26px;overflow:hidden;transition:transform .3s var(--ease)}
+.tt-final:hover{transform:translateY(-4px)}
+.tt-final .fbadge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--forest);background:var(--sand);padding:4px 12px;border-radius:99px;margin-bottom:14px}
+.tt-final h4{font-size:clamp(24px,3.5vw,32px);font-weight:900;color:var(--white);margin-bottom:16px}
+.tt-final .fline{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid rgba(231,173,114,.2)}
+.tt-final .fline .fk{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:rgba(246,237,225,.8)}
+.tt-final .fline .fk svg{width:15px;height:15px;stroke:var(--sand);fill:none;stroke-width:2}
+.tt-final .fline .fv{font-size:16px;font-weight:800;color:var(--sand)}
+
+/* legend / note */
+.tt-note{background:var(--forest);border:1px solid rgba(231,173,114,.16);border-radius:18px;padding:26px 28px;margin-top:10px}
+.tt-note h3{font-size:18px;font-weight:800;color:var(--white);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.tt-note h3 svg{width:20px;height:20px;stroke:var(--sand);fill:none;stroke-width:2}
+.tt-legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:14px}
+.tt-legend span{font-size:14.5px;color:rgba(246,237,225,.8)}
+.tt-legend b{color:var(--sand);font-weight:700}
+.tt-note p{font-size:14px;color:rgba(246,237,225,.6);font-weight:300}
+
+/* CTA strip */
+.tt-cta{background:var(--moss);padding:clamp(50px,7vw,80px) 0;text-align:center}
+.tt-cta h2{font-size:clamp(26px,4vw,44px);font-weight:900;color:var(--white);margin-bottom:20px;letter-spacing:-.5px}
+.tt-cta h2 .accent{color:var(--sand)}
+.tt-cta .btn{justify-content:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--forest);padding:clamp(50px,7vw,80px) 0 34px;border-top:1px solid rgba(231,173,114,.14)}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.foot-inner .brand .mark{width:58px;height:58px}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(226,194,161,.08);color:var(--cream);transition:background .25s,color .25s}
+.foot-social a:hover{background:var(--sand);color:var(--forest)}
+.foot-social svg{width:19px;height:19px}
+.foot-bottom{padding-top:24px;border-top:1px solid rgba(231,173,114,.14);color:rgba(246,237,225,.55);font-size:14px;text-align:center}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media(max-width:640px){
+  .tt-row{grid-template-columns:1fr 1fr;gap:14px 16px}
+  .tt-row .cat{grid-column:1 / -1;margin-bottom:2px}
+  .tt-finals{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="btn btn-ghost nav-home" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <span class="nav-ghost-label">صفحه اصلی</span>
+    </a>
+    <a href="/" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+      <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="50" height="50" /></span>
+    </a>
+    <a class="btn btn-primary nav-register" href="https://formafzar.com/form/zdynk" target="_blank" rel="noopener">
+      ثبت نام بلدرلند کاپ
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HEADER ============ -->
+<section class="tt-hero">
+  <img class="tt-hero-img" src="https://boulderland.ir/wp-content/uploads/2026/07/hero.webp" alt="دیواره سنگ‌نوردی بلدرلند" />
+  <div class="tt-hero-scrim"></div>
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> بلدرلند کاپ</span>
+    <h1>برنامه <span class="accent">زمانی</span> مسابقات</h1>
+    <p>ساعت پذیرش، مسابقه و فینالِ همه‌ی رده‌های سنی. لطفاً حداقل نیم ساعت پیش از زمان پذیرش خود در محل حاضر باشید.</p>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="schedule">
+  <div class="wrap">
+
+    <!-- ===== نونهالان ===== -->
+    <div class="tt-block">
+      <div class="tt-block-head reveal">
+        <span class="tt-chip">رده‌های A و B</span>
+        <h2>نونهالان</h2>
+      </div>
+      <div class="tt-block-sub reveal">پنجشنبه، ۲۵ تیر</div>
+
+      <div class="tt-subhead reveal">پنجشنبه، ۲۵ تیر</div>
+      <div class="tt-table">
+        <!-- row template -->
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان B — دختر</div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۸:۰۰ – ۸:۲۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۸:۳۰ – ۹:۱۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان B — پسر</div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۹:۱۰ – ۹:۳۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۹:۴۰ – ۱۰:۲۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان A — دختر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۰:۲۰ – ۱۰:۴۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۰:۵۰ – ۱۱:۳۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان A — دختر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۱:۱۵ – ۱۱:۳۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۱:۴۵ – ۱۲:۳۰</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان A — پسر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۲:۲۰ – ۱۲:۴۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۲:۵۰ – ۱۳:۳۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نونهالان A — پسر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۳:۱۵ – ۱۳:۳۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۳:۴۵ – ۱۴:۳۰</bdi></span></div>
+        </div>
+      </div>
+
+      <div class="tt-subhead reveal">فینال</div>
+      <div class="tt-finals">
+        <div class="tt-final reveal">
+          <span class="fbadge">فینال</span>
+          <h4>رده B</h4>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg> قرنطینه</span><span class="fv"><bdi>۱۷:۲۰ – ۱۷:۳۰</bdi></span></div>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> شروع مسابقه</span><span class="fv"><bdi>۱۷:۴۵</bdi></span></div>
+        </div>
+        <div class="tt-final reveal">
+          <span class="fbadge">فینال</span>
+          <h4>رده A</h4>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg> قرنطینه</span><span class="fv"><bdi>۱۹:۳۵ – ۱۹:۴۵</bdi></span></div>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> شروع مسابقه</span><span class="fv"><bdi>۲۰:۰۰</bdi></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== نوجوانان ===== -->
+    <div class="tt-block">
+      <div class="tt-block-head reveal">
+        <span class="tt-chip">رده‌های C و D</span>
+        <h2>نوجوانان</h2>
+      </div>
+      <div class="tt-block-sub reveal">جمعه، ۲۶ تیر</div>
+
+      <div class="tt-subhead reveal">جمعه، ۲۶ تیر</div>
+      <div class="tt-table">
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان D — دختر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۷:۰۰ – ۷:۲۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۷:۳۰ – ۸:۱۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان D — دختر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۷:۵۵ – ۸:۱۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۸:۲۵ – ۹:۱۰</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان D — پسر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۹:۰۰ – ۹:۲۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۹:۳۰ – ۱۰:۱۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان D — پسر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۹:۵۵ – ۱۰:۱۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۰:۲۵ – ۱۱:۱۰</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان C — دختر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۱:۰۰ – ۱۱:۲۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۱:۳۰ – ۱۲:۱۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان C — دختر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۱:۵۵ – ۱۲:۱۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۲:۲۵ – ۱۳:۱۰</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان C — پسر <span class="grp">گروه ۱</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۳:۰۰ – ۱۳:۲۰</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۳:۳۰ – ۱۴:۱۵</bdi></span></div>
+        </div>
+        <div class="tt-row reveal">
+          <div class="cat">نوجوانان C — پسر <span class="grp">گروه ۲</span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> پذیرش</span><span class="val"><bdi>۱۳:۵۵ – ۱۴:۱۵</bdi></span></div>
+          <div class="tt-cell"><span class="lbl"><svg viewBox="0 0 24 24"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> مسابقه</span><span class="val"><bdi>۱۴:۲۵ – ۱۵:۱۰</bdi></span></div>
+        </div>
+      </div>
+
+      <div class="tt-subhead reveal">فینال</div>
+      <div class="tt-finals">
+        <div class="tt-final reveal">
+          <span class="fbadge">فینال</span>
+          <h4>رده D</h4>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg> قرنطینه</span><span class="fv"><bdi>۱۷:۲۰ – ۱۷:۳۰</bdi></span></div>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> شروع مسابقه</span><span class="fv"><bdi>۱۷:۴۵</bdi></span></div>
+        </div>
+        <div class="tt-final reveal">
+          <span class="fbadge">فینال</span>
+          <h4>رده C</h4>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg> قرنطینه</span><span class="fv"><bdi>۱۹:۳۵ – ۱۹:۴۵</bdi></span></div>
+          <div class="fline"><span class="fk"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> شروع مسابقه</span><span class="fv"><bdi>۲۰:۰۰</bdi></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== note / legend ===== -->
+    <div class="tt-note reveal">
+      <h3><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> راهنما و نکات</h3>
+      <div class="tt-legend">
+        <span><b>پذیرش:</b> زمان حضور و ثبت ورود در محل</span>
+        <span><b>مسابقه:</b> زمان اجرای صعود</span>
+        <span><b>قرنطینه:</b> ورود به منطقه‌ی ایزوله پیش از فینال</span>
+      </div>
+      <p>لطفاً حداقل ۳۰ دقیقه پیش از ساعت پذیرش رده‌ی خود در محل حاضر باشید. زمان‌بندی ممکن است بسته به روند مسابقه اندکی جابه‌جا شود؛ اطلاع‌رسانی نهایی در محل انجام می‌شود.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="tt-cta">
+  <div class="wrap">
+    <h2>هنوز ثبت‌نام نکرده‌ای؟ <span class="accent">همین حالا</span> اقدام کن.</h2>
+    <a class="btn btn-primary" href="https://formafzar.com/form/zdynk" target="_blank" rel="noopener">
+      ثبت نام مسابقه بلدرلند کاپ
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a href="/" class="brand">
+        <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="58" height="58" /></span>
+      </a>
+      <div class="foot-social">
+        <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m22 3-20 8 6 2 2 6 3-4 5 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">© ۱۴۰۴ باشگاه سنگ‌نوردی بلدرلند — برنامه زمانی مسابقات بلدرلند کاپ.</div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%6*0.05)+'s';io.observe(el);});
+</script>
+</body>
+</html>

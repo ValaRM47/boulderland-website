@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>بلدرلند | باشگاه سنگ‌نوردی</title>
+<meta name="description" content="بلدرلند، بزرگ‌ترین مرکز سنگ‌نوردی داخل سالن. دیواره‌های حرفه‌ای، مربیان بین‌المللی و تجربه‌ای فراموش‌نشدنی." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
+<style>
+/* ==========================================================================
+   OP CLIMBING — اوج / Award-style RTL Farsi homepage
+   Brand palette:
+     --sand   #e7ad72   warm accent
+     --forest #3c4b48   deep charcoal-green (base dark)
+     --moss   #3f6356   secondary green
+     --cream  #e2c2a1   light warm tone
+   ========================================================================== */
+
+:root{
+  --sand:#e7ad72;
+  --forest:#3c4b48;
+  --moss:#3f6356;
+  --cream:#e2c2a1;
+  --ink:#202927;          /* deeper than forest for backgrounds */
+  --white:#fdfbf7;
+  --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1320px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Vazirmatn',system-ui,sans-serif;
+  background:var(--ink);
+  color:var(--cream);
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+::selection{background:var(--sand);color:var(--forest)}
+
+.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px}
+
+/* ---------- Reusable IMAGE PLACEHOLDER SLOTS ---------- */
+.img-slot{
+  position:relative;
+  width:100%;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:
+    repeating-linear-gradient(135deg,rgba(226,194,161,.05) 0 14px,rgba(226,194,161,.02) 14px 28px),
+    linear-gradient(160deg,var(--moss),var(--forest));
+  border:1.5px dashed rgba(231,173,114,.55);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:14px;color:var(--cream);
+  transition:border-color .3s var(--ease),transform .5s var(--ease);
+}
+.img-slot:hover{border-color:var(--sand)}
+.img-slot .shape-ico{
+  width:56px;height:56px;stroke:var(--sand);stroke-width:1.5;fill:none;opacity:.9;
+}
+.img-slot .slot-shape{
+  font-size:13px;font-weight:700;color:var(--sand);
+  letter-spacing:.3px;
+}
+.img-slot .slot-dim{
+  font-size:12px;font-weight:500;color:rgba(246,237,225,.72);
+  direction:ltr;font-variant-numeric:tabular-nums;
+  background:rgba(32,41,39,.55);padding:4px 12px;border-radius:99px;
+}
+.img-slot .slot-hint{
+  position:absolute;top:12px;inset-inline-start:12px;
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(246,237,225,.5);
+}
+.ar-square{aspect-ratio:1/1}
+.ar-portrait{aspect-ratio:4/5}
+.ar-tall{aspect-ratio:3/4}
+.ar-land{aspect-ratio:16/9}
+.ar-wide{aspect-ratio:21/9}
+.ar-hero{aspect-ratio:auto;height:100%}
+
+/* ============ NAV ============ */
+header.nav{
+  position:fixed;top:0;inset-inline:0;z-index:50;
+  transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease);
+  padding:22px 0;
+}
+header.nav.scrolled{
+  background:rgba(32,41,39,.82);
+  backdrop-filter:blur(14px);
+  padding:14px 0;
+  border-bottom:1px solid rgba(231,173,114,.14);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:22px;letter-spacing:.5px;color:var(--white)}
+.brand .mark{
+  width:52px;height:52px;display:grid;place-items:center;flex-shrink:0;
+}
+.brand .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.foot-brand .brand .mark{width:64px;height:64px}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:15px;font-weight:500;color:var(--cream);opacity:.85;transition:opacity .2s,color .2s;position:relative}
+.nav-links a:hover{opacity:1;color:var(--sand)}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;inset-inline-end:0;height:2px;width:0;background:var(--sand);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;
+  font-family:inherit;font-weight:700;font-size:15px;
+  padding:13px 26px;border-radius:99px;transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;
+}
+.btn-primary{background:var(--sand);color:var(--forest)}
+.btn-primary:hover{background:var(--cream);box-shadow:0 12px 30px -10px rgba(231,173,114,.6)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(231,173,114,.5)}
+.btn-ghost:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+.btn svg{width:17px;height:17px}
+.nav-toggle{display:none;background:none;border:none;color:var(--cream);cursor:pointer}
+.nav-toggle svg{width:30px;height:30px}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding-block:90px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center}
+.hero-scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg,rgba(32,41,39,.92) 0%,rgba(32,41,39,.35) 45%,rgba(32,41,39,.55) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;
+  color:var(--sand);letter-spacing:1px;margin-bottom:22px;
+  border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{
+  font-weight:900;color:var(--white);
+  font-size:clamp(52px,10vw,148px);line-height:.92;letter-spacing:-2px;
+  margin-bottom:26px;
+}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--sand)}
+.hero h1 .accent{color:var(--sand)}
+.hero-sub{max-width:560px;font-size:clamp(16px,2vw,20px);color:rgba(246,237,225,.85);margin-bottom:36px;font-weight:300}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero-scrollnote{position:absolute;bottom:60px;inset-inline-start:clamp(20px,5vw,64px);z-index:2;
+  writing-mode:vertical-rl;font-size:12px;letter-spacing:3px;color:rgba(246,237,225,.5);text-transform:uppercase;display:flex;align-items:center;gap:14px}
+@media(max-width:900px){.hero-scrollnote{display:none}}
+
+/* ============ MARQUEE STATS ============ */
+.marquee{background:var(--sand);color:var(--forest);overflow:hidden;padding:20px 0;border-block:2px solid var(--forest)}
+.marquee-track{display:flex;gap:60px;white-space:nowrap;width:max-content;animation:scroll 26s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(50%)}}
+.marquee-track span{font-weight:900;font-size:26px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:16px}
+.marquee-track span::after{content:"";width:12px;height:12px;background:var(--forest);border-radius:50%;transform:rotate(45deg)}
+
+/* ============ SECTION HEADINGS ============ */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:52px;flex-wrap:wrap}
+.sec-tag{font-size:14px;font-weight:700;color:var(--sand);letter-spacing:2px;text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-tag::before{content:"";width:40px;height:2px;background:var(--sand)}
+.sec-head h2{font-size:clamp(34px,5.5vw,72px);line-height:1;font-weight:900;color:var(--white);letter-spacing:-1px}
+.sec-head p{max-width:420px;color:rgba(246,237,225,.7);font-size:17px;font-weight:300}
+
+/* ============ INTRO / ABOUT ============ */
+.intro{padding:clamp(90px,12vw,150px) 0;background:var(--forest)}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.intro-grid h2{font-size:clamp(30px,4.5vw,56px);line-height:1.08;font-weight:800;color:var(--white);margin-bottom:14px;letter-spacing:-1px}
+.intro-grid h2 em{color:var(--sand);font-style:normal}
+.intro-grid .intro-lead{font-size:clamp(19px,2.4vw,26px);color:var(--sand);font-weight:600;margin-bottom:26px;max-width:none}
+.intro-grid p{font-size:18px;color:rgba(246,237,225,.78);margin-bottom:22px;font-weight:300;max-width:520px}
+.intro-stats{display:flex;gap:40px;margin-top:38px;flex-wrap:wrap}
+.intro-stats .num{font-size:52px;color:var(--sand);line-height:1;white-space:nowrap}
+.intro-stats .num .unit{font-size:.4em;font-weight:inherit}
+.intro-stats .num sup{font-size:.62em;vertical-align:super;line-height:0}
+.intro-stats .lbl{font-size:15px;color:rgba(246,237,225,.7);margin-top:6px}
+.intro-visual{position:relative}
+.intro-photo{position:relative;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.intro-photo img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center;transition:transform .8s var(--ease)}
+.intro-photo:hover img{transform:scale(1.05)}
+.intro-visual .badge{position:absolute;bottom:-26px;inset-inline-start:-26px;background:var(--sand);color:var(--forest);
+  border-radius:18px;padding:22px 26px;box-shadow:0 20px 50px -15px rgba(0,0,0,.5);max-width:230px}
+.intro-visual .badge .big{font-size:34px;font-weight:900;line-height:1}
+.intro-visual .badge .small{font-size:14px;font-weight:600;margin-top:4px}
+
+/* ============ WALLS ============ */
+.walls{padding:clamp(90px,12vw,150px) 0;background:var(--ink)}
+.walls-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+.wall-card{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  transition:transform .5s var(--ease)}
+.wall-card:hover{transform:translateY(-8px)}
+.wall-card .img-slot{height:100%}
+/* Real wall photo fills the ENTIRE card */
+.wall-photo{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:1}
+.wall-photo img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center;transition:transform .6s var(--ease)}
+.wall-card:hover .wall-photo img{transform:scale(1.06)}
+.wall-meta{position:absolute;inset-inline:0;bottom:0;z-index:3;padding:70px 26px 26px;
+  background:linear-gradient(0deg,rgba(18,24,22,.96) 0%,rgba(18,24,22,.78) 38%,rgba(18,24,22,.25) 72%,transparent 100%);
+  pointer-events:none}
+.wall-meta .k{font-size:13px;font-weight:700;color:var(--sand);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.wall-meta h3{font-size:clamp(22px,2.6vw,34px);font-weight:900;color:var(--white);line-height:1.05}
+.wall-meta .desc{font-size:15px;color:rgba(246,237,225,.75);margin-top:8px;max-width:340px}
+.wall-chip{position:absolute;top:20px;inset-inline-end:20px;z-index:4;background:rgba(32,41,39,.72);
+  backdrop-filter:blur(6px);border:1px solid rgba(231,173,114,.35);color:var(--cream);
+  font-size:13px;font-weight:700;padding:8px 15px;border-radius:99px}
+.span-7{grid-column:span 7}.span-5{grid-column:span 5}
+.span-4{grid-column:span 4}.span-8{grid-column:span 8}
+.span-6{grid-column:span 6}.span-12{grid-column:span 12}
+
+/* ============ COACHES ============ */
+.coaches{padding:clamp(90px,12vw,150px) 0;background:var(--moss)}
+/* Coaches: swipeable carousel on every breakpoint (3 visible on desktop) */
+.coach-grid{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  overflow-y:hidden;                  /* lock vertical — stops the stray scrollbar overflow-x forces */
+  scroll-snap-type:x proximity;       /* proximity (not mandatory) — no jitter/wobble on desktop trackpads */
+  scroll-padding-inline:clamp(20px,5vw,64px);
+  padding-top:14px;                   /* room so the hover-lift isn't clipped */
+  padding-bottom:18px;
+  margin-inline:calc(-1 * clamp(20px,5vw,64px));
+  padding-inline:clamp(20px,5vw,64px);
+  -webkit-overflow-scrolling:touch;   /* momentum scrolling on iOS */
+  touch-action:pan-x pan-y;           /* horizontal swipe on carousel, vertical scroll for the page */
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;               /* hide the scrollbar — arrows handle navigation */
+}
+.coach-grid::-webkit-scrollbar{display:none;width:0;height:0}
+.coach{position:relative;flex:0 0 calc((100% - 48px)/3);scroll-snap-align:start;
+  border-radius:var(--radius);overflow:hidden;background:var(--forest);
+  transition:transform .45s var(--ease);cursor:pointer}
+.coach:hover{transform:translateY(-10px)}
+.coach .img-slot{border-radius:0;border-inline:none;border-top:none;transition:transform .6s var(--ease),border-color .3s var(--ease)}
+.coach:hover .img-slot{transform:scale(1.08)}
+/* real photo variant */
+.coach-photo{position:relative;aspect-ratio:4/5;overflow:hidden;transform:translateZ(0)}
+.coach-photo img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center top;transform-origin:center top;backface-visibility:hidden;transition:transform .6s var(--ease)}
+.coach:hover .coach-photo img{transform:scale(1.06)}
+.coach-body{padding:22px}
+.coach-body .role{font-size:13px;font-weight:700;color:var(--sand);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.coach-body h3{font-size:23px;font-weight:800;color:var(--white)}
+.coach-body p{font-size:14.5px;color:rgba(246,237,225,.72);margin-top:8px;font-weight:300}
+.coach .tag-lvl{position:absolute;top:16px;inset-inline-end:16px;z-index:3;background:var(--sand);color:var(--forest);
+  font-size:12px;font-weight:800;padding:6px 13px;border-radius:99px;max-width:calc(100% - 32px)}
+
+/* Coaches header + carousel arrows */
+.coach-head-side{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.coach-nav{display:flex;gap:12px}
+.coach-arrow{width:52px;height:52px;border-radius:50%;cursor:pointer;
+  background:transparent;border:1.5px solid rgba(231,173,114,.5);color:var(--sand);
+  display:grid;place-items:center;transition:background .25s,color .25s,border-color .25s,opacity .25s}
+.coach-arrow:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+.coach-arrow:disabled{opacity:.35;cursor:default;background:transparent;color:var(--sand);border-color:rgba(231,173,114,.5)}
+.coach-arrow svg{width:22px;height:22px}
+
+/* ============ PROGRAMS ============ */
+.programs{padding:clamp(90px,12vw,150px) 0;background:var(--forest)}
+.prog-list{display:grid;gap:0;border-top:1px solid rgba(231,173,114,.2)}
+.prog{display:grid;grid-template-columns:80px 1.4fr 2fr auto;gap:30px;align-items:center;
+  padding:34px 8px;border-bottom:1px solid rgba(231,173,114,.2);transition:background .3s,padding .3s var(--ease);cursor:pointer}
+.prog:hover{background:rgba(63,99,86,.4);padding-inline:24px}
+.prog .idx{font-family:'Anton',sans-serif;font-size:30px;color:rgba(231,173,114,.5)}
+.prog h3{font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--white)}
+.prog .p-desc{font-size:16px;color:rgba(246,237,225,.7);font-weight:300}
+.prog .p-go{width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(231,173,114,.5);
+  display:grid;place-items:center;color:var(--sand);transition:background .3s,color .3s,transform .3s var(--ease)}
+.prog:hover .p-go{background:var(--sand);color:var(--forest);transform:rotate(-45deg)}
+.prog .p-go svg{width:22px;height:22px}
+@media(max-width:820px){.prog{grid-template-columns:50px 1fr auto;gap:16px}.prog .p-desc{display:none}}
+
+/* ============ GALLERY BAND ============ */
+.gallery{padding:clamp(70px,10vw,120px) 0;background:var(--ink)}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:130px;gap:18px}
+.gallery-grid .img-slot{height:100%}
+.gallery-photo{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer}
+.gallery-photo img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center;transition:transform .6s var(--ease)}
+.gallery-photo:hover img{transform:scale(1.06)}
+.g1{grid-column:span 2;grid-row:span 2}
+.g2{grid-column:span 2;grid-row:span 3}
+.g3{grid-column:span 2;grid-row:span 2}
+.g4{grid-column:span 2;grid-row:span 2}
+.g5{grid-column:span 2;grid-row:span 3}
+.g6{grid-column:span 2;grid-row:span 2}
+
+/* ============ MEMBERSHIP ============ */
+.membership{padding:clamp(90px,12vw,150px) 0;background:var(--moss)}
+/* ---- Session pricing (list + free-entry highlight) ---- */
+.pricing{display:grid;grid-template-columns:1.45fr .85fr;gap:24px;align-items:stretch}
+.price-list{background:var(--forest);border-radius:var(--radius);padding:6px clamp(22px,3vw,38px);
+  border:1.5px solid rgba(231,173,114,.16)}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:clamp(22px,3vw,30px) 4px;border-bottom:1px solid rgba(231,173,114,.16);transition:padding .3s var(--ease)}
+.price-row:last-child{border-bottom:none}
+.price-row:hover{padding-inline:16px}
+.pr-info{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.price-row .pr-label{font-size:clamp(20px,2.4vw,28px);font-weight:800;color:var(--white)}
+.pr-tag{font-size:11px;font-weight:800;color:var(--forest);background:var(--sand);padding:4px 11px;border-radius:99px;letter-spacing:.3px}
+.price-row .pr-val{font-size:clamp(20px,2.3vw,30px);font-weight:900;color:var(--sand);white-space:nowrap}
+.price-row .pr-val em{font-style:normal;font-size:14px;font-weight:600;color:rgba(246,237,225,.6)}
+.price-row.featured .pr-label{color:var(--sand)}
+.price-hero{background:var(--sand);color:var(--forest);border-radius:var(--radius);
+  padding:clamp(32px,4vw,44px);display:flex;flex-direction:column;justify-content:center;gap:14px;text-align:center}
+.price-hero .ph-name{font-size:20px;font-weight:800;letter-spacing:.3px}
+.price-hero .ph-amt{font-size:clamp(40px,6vw,62px);font-weight:900;line-height:1}
+.price-hero .ph-amt span{font-size:18px;font-weight:700}
+.price-hero .ph-note{font-size:15px;color:rgba(60,75,72,.82);font-weight:500;max-width:280px;margin-inline:auto}
+.price-hero .btn{margin-top:10px;justify-content:center;width:100%}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan{background:var(--forest);border-radius:var(--radius);padding:38px 34px;border:1.5px solid rgba(231,173,114,.16);
+  transition:transform .4s var(--ease),border-color .3s;display:flex;flex-direction:column}
+.plan:hover{transform:translateY(-8px);border-color:rgba(231,173,114,.5)}
+.plan.featured{background:var(--sand);color:var(--forest);border-color:var(--sand);transform:scale(1.03)}
+.plan.featured:hover{transform:scale(1.03) translateY(-8px)}
+.plan .p-name{font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sand);margin-bottom:16px}
+.plan.featured .p-name{color:var(--forest)}
+.plan .p-price{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.plan .p-price .amt{font-size:52px;font-weight:900;color:var(--white);line-height:1}
+.plan.featured .p-price .amt{color:var(--forest)}
+.plan .p-price .per{font-size:15px;color:rgba(246,237,225,.6)}
+.plan.featured .p-price .per{color:rgba(60,75,72,.7)}
+.plan .p-note{font-size:14px;color:rgba(246,237,225,.6);margin-bottom:26px}
+.plan.featured .p-note{color:rgba(60,75,72,.75)}
+.plan ul{list-style:none;display:grid;gap:14px;margin-bottom:30px;flex:1}
+.plan li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:rgba(246,237,225,.85)}
+.plan.featured li{color:rgba(60,75,72,.9)}
+.plan li svg{width:20px;height:20px;flex-shrink:0;stroke:var(--sand);margin-top:2px}
+.plan.featured li svg{stroke:var(--forest)}
+.plan .btn{width:100%;justify-content:center}
+.featured-badge{display:inline-block;background:var(--forest);color:var(--sand);font-size:12px;font-weight:800;
+  padding:5px 14px;border-radius:99px;margin-bottom:16px;letter-spacing:1px}
+
+/* ============ CTA BANNER ============ */
+.cta{padding:clamp(80px,10vw,130px) 0;position:relative;overflow:hidden;background:var(--ink)}
+.cta-box{position:relative;border-radius:34px;overflow:hidden;padding:clamp(50px,8vw,100px) clamp(30px,6vw,80px);
+  background:var(--moss)}
+.cta-content{position:relative;z-index:2;text-align:center;max-width:760px;margin:0 auto}
+.cta-content h2{font-size:clamp(34px,6vw,80px);font-weight:900;color:var(--white);line-height:.98;letter-spacing:-1px;margin-bottom:22px}
+.cta-content h2 .accent{color:var(--sand)}
+.cta-content p{font-size:19px;color:rgba(246,237,225,.82);margin-bottom:36px;font-weight:300}
+.cta-content .hero-cta{justify-content:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--forest);padding:clamp(70px,9vw,110px) 0 40px;border-top:1px solid rgba(231,173,114,.14)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.4fr;gap:44px;margin-bottom:60px}
+.foot-brand .brand{margin-bottom:20px}
+.foot-brand p{color:rgba(246,237,225,.65);font-size:15px;max-width:300px;font-weight:300}
+.foot-col h4{font-size:15px;font-weight:800;color:var(--sand);margin-bottom:20px;letter-spacing:.5px}
+.foot-col a{display:block;color:rgba(246,237,225,.72);font-size:15px;margin-bottom:13px;transition:color .2s,padding .2s}
+.foot-col a:hover{color:var(--sand);padding-inline-start:6px}
+.foot-news{display:flex;gap:10px;margin-top:16px}
+.foot-news input{flex:1;background:rgba(32,41,39,.6);border:1px solid rgba(231,173,114,.25);border-radius:12px;
+  padding:13px 16px;color:var(--cream);font-family:inherit;font-size:14px;outline:none;transition:border-color .2s}
+.foot-news input:focus{border-color:var(--sand)}
+.foot-news button{background:var(--sand);color:var(--forest);border:none;border-radius:12px;width:50px;cursor:pointer;
+  display:grid;place-items:center;transition:background .2s}
+.foot-news button:hover{background:var(--cream)}
+.foot-news button svg{width:20px;height:20px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  padding-top:30px;border-top:1px solid rgba(231,173,114,.14);color:rgba(246,237,225,.55);font-size:14px}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(226,194,161,.08);color:var(--cream);transition:background .25s,color .25s}
+.foot-social a:hover{background:var(--sand);color:var(--forest)}
+.foot-social svg{width:19px;height:19px}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1024px){
+  .intro-grid{grid-template-columns:1fr;gap:70px}
+  .coach{flex-basis:calc((100% - 24px)/2)} /* 2 visible on tablet */
+  .foot-grid{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:820px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+  .walls-grid{grid-template-columns:1fr}
+  .wall-card{grid-column:span 1 !important}
+  .wall-card .img-slot{aspect-ratio:4/3}
+  .wall-photo{position:relative;inset:auto;aspect-ratio:4/3;height:auto}
+  .plan-grid{grid-template-columns:1fr}
+  .plan.featured{transform:none}
+  .plan.featured:hover{transform:translateY(-8px)}
+  .pricing{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 1;grid-row:span 1}
+  .intro-visual .badge{position:relative;inset:auto;margin-top:20px}
+
+  /* Coaches: exactly 1 card per screen on mobile */
+  .coach-grid{gap:16px}
+  .coach{flex:0 0 100%;scroll-snap-align:center}
+  .coach:hover{transform:none} /* avoid lift fighting horizontal scroll on touch */
+}
+@media(max-width:560px){
+  .coach{flex:0 0 100%}
+  .foot-grid{grid-template-columns:1fr}
+  /* keep the 3 stats on one row on phones */
+  .intro-stats{gap:10px;flex-wrap:nowrap;justify-content:space-between}
+  .intro-stats>div{flex:1 1 0;min-width:0}
+  .intro-stats .num{font-size:clamp(26px,7.5vw,34px)}
+  .intro-stats .lbl{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+.mobile-menu.open{transform:none;visibility:visible}
+.mobile-menu a{font-size:28px;font-weight:800;color:var(--cream);padding:12px}
+.mobile-menu a:hover{color:var(--sand)}
+.mobile-close{position:absolute;top:24px;inset-inline-start:24px;background:none;border:none;color:var(--cream);cursor:pointer}
+.mobile-close svg{width:34px;height:34px}
+
+/* ============ VISIT MODAL ============ */
+.modal-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(15,18,17,.72);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-card{position:relative;width:100%;max-width:460px;text-align:center;
+  background:var(--forest);border:1px solid rgba(231,173,114,.25);border-radius:26px;
+  padding:clamp(30px,5vw,46px) clamp(24px,4vw,40px);box-shadow:0 40px 90px -30px rgba(0,0,0,.75);
+  transform:translateY(18px) scale(.97);transition:transform .35s var(--ease)}
+.modal-overlay.open .modal-card{transform:none}
+.modal-close{position:absolute;top:16px;inset-inline-start:16px;width:38px;height:38px;border:none;cursor:pointer;
+  border-radius:11px;display:grid;place-items:center;background:rgba(226,194,161,.1);color:var(--cream);transition:background .2s,color .2s}
+.modal-close:hover{background:var(--sand);color:var(--forest)}
+.modal-close svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2}
+.modal-icon{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(231,173,114,.13);border:1px solid rgba(231,173,114,.35)}
+.modal-icon svg{width:30px;height:30px;stroke:var(--sand);fill:none;stroke-width:1.8}
+.modal-card h3{font-size:clamp(21px,2.6vw,26px);font-weight:800;color:var(--white);margin-bottom:14px}
+.modal-card p{font-size:16px;color:rgba(246,237,225,.85);line-height:1.9;font-weight:300;margin-bottom:28px}
+.btn-map{display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%;cursor:pointer;
+  font-family:inherit;font-weight:800;font-size:16px;padding:16px 26px;border-radius:99px;border:none;
+  background:#e8862f;color:#fff;transition:transform .25s var(--ease),background .25s,box-shadow .25s;
+  box-shadow:0 16px 40px -14px rgba(232,134,47,.6)}
+.btn-map:hover{background:#f2952f;transform:translateY(-2px);box-shadow:0 22px 50px -16px rgba(232,134,47,.75)}
+.btn-map svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+      <span class="mark">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="52" height="52" />
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="ناوبری اصلی">
+      <a href="#walls">دیواره‌ها</a>
+      <a href="#coaches">مربیان</a>
+      <a href="#programs">برنامه‌ها</a>
+      <a href="#membership">عضویت</a>
+      <a href="#contact">تماس</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a class="btn btn-primary" href="#walls" target="_blank" rel="noopener">
+        مشاهده دیواره ها
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="بستن منو">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#walls">دیواره‌ها</a>
+  <a href="#coaches">مربیان</a>
+  <a href="#programs">برنامه‌ها</a>
+  <a href="#membership">عضویت</a>
+  <a href="#contact">تماس</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-img" src="https://boulderland.ir/wp-content/uploads/2026/07/hero.webp" alt="دیواره‌ی سنگ‌نوردی رنگارنگ باشگاه بلدرلند" />
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="wrap">
+    <span class="hero-eyebrow"><span class="dot"></span> بزرگ‌ترین مرکز سنگ‌نوردی داخل سالن ایران</span>
+    <h1>
+      سنگ‌نوردی<br>
+      <span class="accent">حرفه‌ای</span> برای همه<span class="stroke">.</span>
+    </h1>
+    <p class="hero-sub">بیش از ۱۲۰۰ متر مربع دیواره‌ی حرفه‌ای، مسیرهایی که هر هفته تازه می‌شوند و مربیانی که تو را تا قله همراهی می‌کنند. اینجا هر صعود، یک داستان تازه است.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#walls" target="_blank" rel="noopener">
+        مشاهده دیواره ها
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#coaches">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        مربی‌های بلدرلند
+      </a>
+    </div>
+  </div>
+  <div class="hero-scrollnote">اسکرول کنید <span style="height:40px;width:1px;background:currentColor"></span></div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>بولدرینگ</span><span>دیواره سرطناب</span><span>تاپ‌رُپ</span><span>کودکان</span><span>مسابقات</span>
+    <span>بولدرینگ</span><span>دیواره سرطناب</span><span>تاپ‌رُپ</span><span>کودکان</span><span>مسابقات</span>
+  </div>
+</div>
+
+<!-- ================= INTRO / ABOUT ================= -->
+<section class="intro" id="about">
+  <div class="wrap intro-grid">
+    <div class="reveal">
+      <div class="sec-tag">درباره‌ی بلدرلند</div>
+      <h2>ماجرای <em>بلدرلند</em></h2>
+      <p class="intro-lead">فضایی برای ارتقای سنگ‌نوردی کشور</p>
+      <p>بلدرلند فقط یک باشگاه نیست؛ یک جامعه است. از تازه‌کارِ روز اول تا قهرمانِ ملی، همه اینجا کنار هم رشد می‌کنند. دیواره‌های ما توسط طراحان بین‌المللی مسیر ساخته شده‌اند و فضایی امن، مدرن و پرانرژی برای هر سطحی فراهم می‌کنند.</p>
+      <p>با سیستم تهویه‌ی پیشرفته، تشک‌های ایمنی استاندارد و اپلیکیشن اختصاصی رهگیری پیشرفت، تجربه‌ای کامل در انتظار توست.</p>
+      <div class="intro-stats">
+        <div><div class="num display">۱۲۰۰<span class="unit">&nbsp;متر<sup>۲</sup></span></div><div class="lbl">سطح دیواره</div></div>
+        <div><div class="num display">۳۰۰+</div><div class="lbl">مسیر فعال</div></div>
+        <div><div class="num display">۸</div><div class="lbl">مربی حرفه‌ای</div></div>
+      </div>
+    </div>
+    <div class="intro-visual reveal">
+      <div class="intro-photo">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/kasra-2.webp" alt="سنگ‌نورد در حال صعود روی دیواره‌ی سقفی باشگاه بلدرلند" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WALLS ================= -->
+<section class="walls" id="walls">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">دیواره‌ها</div>
+        <h2>تنوع فضای تمرین،<br>در کلاس جهانی</h2>
+      </div>
+      <p>از دیواره‌های بولدرینگِ کوتاه و انفجاری تا دیواره‌های بلندِ لید با ارتفاع ۱۸ متر — برای هر سبک و هر سطحی جایی هست.</p>
+    </div>
+
+    <div class="walls-grid">
+      <!-- Wall 1 - large -->
+      <article class="wall-card span-7 reveal">
+        <div class="img-slot ar-land" role="img" aria-label="دیواره‌ی بولدرینگ اصلی">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/hero.webp" alt="دیواره بلند جنوبی، دیواره‌ی لید باشگاه بلدرلند" />
+        </div>
+        <span class="wall-chip">تنوع بالای مسیر</span>
+        <div class="wall-meta">
+          <div class="k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4 20 5-11 4 6 3-4 4 9"/></svg> بولدرینگ</div>
+          <h3>دیواره‌ی اِستیج</h3>
+          <p class="desc">قلب باشگاه؛ ۲۰ متر عرض، مسیرهای رنگی با درجه های متونع برای تمام سنگ نوردان.</p>
+        </div>
+      </article>
+
+      <!-- Wall 2 — دیواره بلند جنوبی -->
+      <article class="wall-card span-5 reveal">
+        <div class="wall-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/Lead-wall.webp" alt="دیواره بلند جنوبی، دیواره‌ی لید باشگاه بلدرلند" />
+        </div>
+        <span class="wall-chip">ارتفاع ۱۸ متر</span>
+        <div class="wall-meta">
+          <div class="k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 2v20"/><path d="m5 9 7-7 7 7"/></svg> لید</div>
+          <h3>دیواره بلند جنوبی</h3>
+          <p class="desc">دیواره‌ای حرفه‌ای برای تمام سنگ‌نوردان از مبتدی تا حرفه‌ای.</p>
+        </div>
+      </article>
+
+      <!-- Wall 3 -->
+      <article class="wall-card span-4 reveal">
+        <div class="img-slot ar-portrait" role="img" aria-label="دیواره‌ی عمودی تکنیکال">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/moonboard.webp" alt="دیواره مون بورد استاندارد بلدرلند" />
+        </div>
+        <span class="wall-chip">استاندارد جهانی</span>
+        <div class="wall-meta">
+          <div class="k">تکنیکال</div>
+          <h3>مون بورد</h3>
+        </div>
+      </article>
+
+      <!-- Wall 4 -->
+      <article class="wall-card span-4 reveal">
+        <div class="img-slot ar-portrait" role="img" aria-label="دیواره‌ی سقفی">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/spraywall.png" alt="اسپری وال بلدرلند" />
+        </div>
+        <span class="wall-chip">شیب ۴۰ درجه</span>
+        <div class="wall-meta">
+          <div class="k">قدرتی تمرینات</div>
+          <h3>اسپری وال</h3>
+        </div>
+      </article>
+
+      <!-- Wall 5 -->
+      <article class="wall-card span-4 reveal">
+        <div class="img-slot ar-portrait" role="img">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/island.webp" alt="دیواره جزیره بلدرلند" />
+        </div>
+        <span class="wall-chip">بلدرینگ</span>
+        <div class="wall-meta">
+          <div class="k">خلاقیت در طراحی</div>
+          <h3>جزیره</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COACHES ================= -->
+<section class="coaches" id="coaches">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">مربیان</div>
+        <h2>افرادی که تو را<br>بالا می‌برند.</h2>
+      </div>
+      <div class="coach-head-side">
+        <p>تیم مربیان بلدرلند ترکیبی از قهرمانان ملی و مربیان بین‌المللی است؛ هرکدام متخصص یک سبک، همه عاشق آموزش.</p>
+        <div class="coach-nav">
+          <button class="coach-arrow" id="coachPrev" aria-label="مربی قبلی">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button class="coach-arrow" id="coachNext" aria-label="مربی بعدی">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="coach-grid">
+      <!-- Coach 1 — کسری روحانی (بنیان‌گذار و سرمربی) -->
+      <article class="coach reveal">
+        <span class="tag-lvl">بنیان‌گذار و سرمربی</span>
+        <div class="coach-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/kasra-rouhani.webp" alt="کسری روحانی، بنیان‌گذار و سرمربی باشگاه بلدرلند" />
+        </div>
+        <div class="coach-body">
+          <h3>کسری روحانی</h3>
+          <p>قهرمان ملی، ملی‌پوش سابق با بیش از ۱۰ سال سابقه‌ی مربی‌گری.</p>
+        </div>
+      </article>
+
+      <!-- Coach 2 — علی مقنی‌زاده -->
+      <article class="coach reveal">
+        <span class="tag-lvl">مربی</span>
+        <div class="coach-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/ali-moghani.webp" alt="علی مقنی‌زاده، مربی باشگاه بلدرلند" />
+        </div>
+        <div class="coach-body">
+          <h3>علی مقنی‌زاده</h3>
+          <p>کارشناسی ارشد تربیت بدنی از دانشگاه تهران، بیش از ۱۰ سال سابقه‌ی سنگ‌نوردی.</p>
+        </div>
+      </article>
+
+      <!-- Coach 3 — مهدی صفادوست -->
+      <article class="coach reveal">
+        <span class="tag-lvl">مربی</span>
+        <div class="coach-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/mehdi.webp" alt="مهدی صفادوست، مربی باشگاه بلدرلند" />
+        </div>
+        <div class="coach-body">
+          <h3>مهدی صفادوست</h3>
+          <p>بیش از ۲۰ سال سابقه‌ی سنگ‌نوردی و مربیگری حرفه‌ای.</p>
+        </div>
+      </article>
+
+      <!-- Coach 4 — حسین لک -->
+      <article class="coach reveal">
+        <span class="tag-lvl">مربی</span>
+        <div class="coach-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/hossein-lak.webp" alt="حسین لک، مربی باشگاه بلدرلند" />
+        </div>
+        <div class="coach-body">
+          <h3>حسین لک</h3>
+          <p>بیش از ۱۵ سال سابقه‌ی سنگ‌نوردی و مربیگری حرفه‌ای.</p>
+        </div>
+      </article>
+
+      <!-- Coach 5 — امیرحسین (نام از روی فایل تصویر حدس زده شد؛ لطفاً تأیید کنید) -->
+      <article class="coach reveal">
+        <span class="tag-lvl">مربی</span>
+        <div class="coach-photo">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/07/amirhossein.webp" alt="امیرحسین، مربی باشگاه بلدرلند" />
+        </div>
+        <div class="coach-body">
+          <h3>امیرحسین</h3>
+          <p>بیش از ۵ سال سابقه‌ی سنگ‌نوردی و مربیگری حرفه‌ای.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMS ================= -->
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">برنامه‌ها</div>
+        <h2>مسیر تو،<br>از هر جا که هستی.</h2>
+      </div>
+      <p>چه اولین باری‌ست که کفش صعود می‌پوشی، چه برای مسابقات آماده می‌شوی — یک برنامه برای تو داریم.</p>
+    </div>
+
+    <div class="prog-list">
+      <div class="prog reveal">
+        <span class="idx">۰۱</span>
+        <h3>مقدماتی — قدم اول</h3>
+        <span class="p-desc">آشنایی با اصول ایمنی، گره‌ها و اولین صعودهای مطمئن. مناسب افراد بدون هیچ تجربه.</span>
+        <span class="p-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </div>
+      <div class="prog reveal">
+        <span class="idx">۰۲</span>
+        <h3>بولدرینگ حرفه‌ای</h3>
+        <span class="p-desc">تقویت قدرت انگشتان، تکنیک حرکتی و حل مسیرهای دشوار بدون طناب.</span>
+        <span class="p-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </div>
+      <div class="prog reveal">
+        <span class="idx">۰۳</span>
+        <h3>سرطناب و صعود بلند</h3>
+        <span class="p-desc">صعود روی دیواره‌های بلند با طناب، مدیریت ترس ارتفاع و تکنیک کلیپ.</span>
+        <span class="p-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </div>
+      <div class="prog reveal">
+        <span class="idx">۰۴</span>
+        <h3>آموزش حرفه‌ای کودکان از پایه</h3>
+        <span class="p-desc">بازی، حرکت و اعتماد‌به‌نفس؛ صعود در محیطی امن و پرشور برای رده‌ی سنی ۶ تا ۱۴ سال.</span>
+        <span class="p-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </div>
+      <div class="prog reveal">
+        <span class="idx">۰۵</span>
+        <h3>آماده‌سازی مسابقات</h3>
+        <span class="p-desc">برنامه‌ی اختصاصی و شخصی‌سازی‌شده برای ورزشکارانی که هدفشان سکو است.</span>
+        <span class="p-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">گالری</div>
+        <h2>لحظه‌های اوج.</h2>
+      </div>
+      <p>نگاهی به فضای باشگاه، رویدادها و انرژی جامعه‌ی سنگ‌نوردان بلدرلند.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-photo g1">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/boy.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+      <div class="img-slot g2" role="img" aria-label="تصویر گالری ۲">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/gallery2-scaled.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+      <div class="img-slot g3" role="img" aria-label="تصویر گالری ۳">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/mammadkia.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+      <div class="img-slot g5" role="img" aria-label="تصویر گالری ۴">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/ali2-scaled.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+      <div class="gallery-photo g5">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/mammad.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+      <div class="img-slot g6" role="img" aria-label="تصویر گالری ۶">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/07/amirhossein-1.webp" alt="سنگ‌نورد در حال صعود لید در باشگاه بلدرلند" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEMBERSHIP ================= -->
+<section class="membership" id="membership">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">عضویت</div>
+        <h2>پلنی برای<br>هر ریتم زندگی.</h2>
+      </div>
+      <p>بدون قرارداد پیچیده، بدون هزینه‌ی پنهان. هر زمان که خواستی، ارتقا بده.</p>
+    </div>
+
+    <div class="pricing reveal">
+      <div class="price-list">
+        <div class="price-row featured">
+          <div class="pr-info"><span class="pr-label">ده جلسه</span><span class="pr-tag">به‌صرفه‌ترین</span></div>
+          <span class="pr-val">۱۰،۰۰۰،۰۰۰ <em>تومان</em></span>
+        </div>
+        <div class="price-row">
+          <span class="pr-label">هشت جلسه</span>
+          <span class="pr-val">۸٬۵۰۰٬۰۰۰ <em>تومان</em></span>
+        </div>
+        <div class="price-row">
+          <span class="pr-label">چهار جلسه</span>
+          <span class="pr-val">۶٬۰۰۰٬۰۰۰ <em>تومان</em></span>
+        </div>
+        <div class="price-row">
+          <span class="pr-label">یک جلسه</span>
+          <span class="pr-val">۲،۰۰۰،۰۰۰ <em>تومان</em></span>
+        </div>
+      </div>
+
+      <aside class="price-hero">
+        <div class="ph-name">ورودی آزاد</div>
+        <div class="ph-amt">۵۰۰٬۰۰۰ <span>تومان</span></div>
+        <p class="ph-note">دسترسی آزاد به همه‌ی دیواره‌ها برای یک روز — بدون کلاس.</p>
+        <a href="#" data-visit class="btn btn-primary" style="background:var(--forest); color:var(--sand);">  خرید بلیت ورودی</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="cta-content">
+        <h2>اولین صعودت را <span class="accent">امروز</span> تجربه کن.</h2>
+        <p>یک جلسه، بدون هیچ تعهدی. با امکان اجاره تمام وسایل — انرژی و شجاعت با تو.</p>
+        <div class="hero-cta">
+          <a href="#" data-visit class="btn btn-primary">
+            رزرو جلسه‌ی اول
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M19 12H5" />
+              <path d="m12 5-7 7 7 7" />
+            </svg>
+          </a>
+
+          <a href="tel:09125123870" class="btn btn-ghost">
+            تماس با ما
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <span class="mark">
+            <img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="64" height="64" />
+          </span>
+        </a>
+        <p>باشگاه سنگ‌نوردی بلدرلند — جایی که هر صعود، یک قدم به سوی بهترین نسخه‌ی توست.</p>
+        <div class="foot-social" style="margin-top:24px">
+          <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m22 3-20 8 6 2 2 6 3-4 5 4z"/></svg></a>
+          <a href="#" aria-label="یوتیوب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>باشگاه</h4>
+        <a href="#walls">دیواره‌ها</a>
+        <a href="#coaches">مربیان</a>
+        <a href="#programs">برنامه‌ها</a>
+        <a href="#membership">عضویت</a>
+      </div>
+      <div class="foot-col">
+        <h4>اطلاعات</h4>
+        <a href="#">ساعات کاری</a>
+        <a href="#">قوانین ایمنی</a>
+        <a href="#">سؤالات متداول</a>
+       <!-- <a href="#">فروشگاه</a>-->
+      </div>
+      <div class="foot-col">
+        <h4>خبرنامه</h4>
+        <p style="color:rgba(246,237,225,.65);font-size:15px;font-weight:300">از مسیرهای تازه و رویدادها باخبر شو.</p>
+        <form class="foot-news" onsubmit="return false">
+          <label for="news" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">ایمیل شما</label>
+          <input id="news" type="email" placeholder="ایمیل شما" />
+          <button type="submit" aria-label="عضویت در خبرنامه">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+          </button>
+        </form>
+        <p style="color:rgba(246,237,225,.6);font-size:14px;margin-top:20px">
+  تهران، سعادت آباد، خیابان داوود رشیدی، مجموعه ورزشی بلدرلند<br>
+         <a href="tel:+989125123870" style="color:inherit;text-decoration:none;">
+    ۰۹۱۲۵۱۲۳۸۷۰
+           </a>
+        </p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© ۱۴۰۴ باشگاه سنگ‌نوردی بلدرلند. تمام حقوق محفوظ است.</span>
+      <span>طراحی شده با انرژی و ارتفاع.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= VISIT MODAL ================= -->
+<div class="modal-overlay" id="visitModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="visitTitle">
+    <button class="modal-close" id="visitClose" aria-label="بستن">
+      <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <h3 id="visitTitle">بازدید از باشگاه بلدرلند</h3>
+    <p>برای تهیه‌ی بلیط ورودی و بازدید از سالن سنگ‌نوردی بلدرلند، شما می‌تونین هر روز از ساعت ۹ صبح تا ۱۱ شب به ما سر بزنین.</p>
+    <a class="btn-map" href="https://maps.app.goo.gl/YWu2NyDTGdBJ7E9s7" target="_blank" rel="noopener">
+      مشاهده روی نقشه
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// mobile menu
+const mm=document.getElementById('mobileMenu');
+document.getElementById('navToggle').onclick=()=>mm.classList.add('open');
+document.getElementById('mobileClose').onclick=()=>mm.classList.remove('open');
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+
+// reveal on scroll
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=(i%4*0.06)+'s';
+  io.observe(el);
+});
+
+// coaches carousel arrows — custom animator (robust across RTL/LTR scroll models,
+// avoids the buggy native smooth-scroll-to-negative-scrollLeft in some engines)
+(()=>{
+  const grid=document.querySelector('.coach-grid');
+  const prev=document.getElementById('coachPrev');
+  const next=document.getElementById('coachNext');
+  if(!grid||!prev||!next)return;
+  const gap=24;
+  const step=()=>{const c=grid.querySelector('.coach');return (c?c.offsetWidth:300)+gap;};
+  function bounds(){
+    const snap=grid.style.scrollSnapType;grid.style.scrollSnapType='none';
+    const orig=grid.scrollLeft;
+    grid.scrollLeft=-1e6;const min=grid.scrollLeft;
+    grid.scrollLeft=1e6;const max=grid.scrollLeft;
+    grid.scrollLeft=orig;grid.style.scrollSnapType=snap;
+    return {min,max};
+  }
+  let B=bounds();
+  let animating=false;
+  const nextDir=B.min<0?-1:1;               // which way "next" moves scrollLeft
+  const clamp=v=>Math.max(B.min,Math.min(B.max,v));
+  function animateTo(target){
+    target=clamp(target);
+    const start=grid.scrollLeft,dist=target-start;
+    if(Math.abs(dist)<1){update();return;}
+    const dur=420,t0=performance.now();
+    animating=true;grid.style.scrollSnapType='none';
+    (function frame(now){
+      const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);
+      grid.scrollLeft=start+dist*e;
+      if(p<1)requestAnimationFrame(frame);
+      else{grid.style.scrollSnapType='';setTimeout(()=>{animating=false;update();},60);}
+    })(t0);
+  }
+  next.onclick=()=>animateTo(grid.scrollLeft+nextDir*step());
+  prev.onclick=()=>animateTo(grid.scrollLeft-nextDir*step());
+  function update(){
+    if(animating)return;
+    const start=nextDir<0?B.max:B.min,end=nextDir<0?B.min:B.max;
+    prev.disabled=Math.abs(grid.scrollLeft-start)<=2;
+    next.disabled=Math.abs(grid.scrollLeft-end)<=2;
+  }
+  grid.addEventListener('scroll',update,{passive:true});
+  addEventListener('resize',()=>{B=bounds();update();});
+  update();
+})();
+
+// visit modal
+(()=>{
+  const modal=document.getElementById('visitModal');
+  if(!modal)return;
+  const open=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';};
+  const close=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+  document.querySelectorAll('[data-visit]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();open();}));
+  document.getElementById('visitClose').addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal)close();});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+})();
+</script>
+</body>
+</html>
