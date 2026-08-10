@@ -62,12 +62,10 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 .chero-name{position:relative;display:inline-flex;flex-direction:column;align-items:center;line-height:.82}
 .chero-name .line{font-weight:900;color:var(--sand);font-size:clamp(64px,17vw,208px);letter-spacing:-3px;position:relative;z-index:1}
 .chero-name .line:nth-child(3){color:transparent;-webkit-text-stroke:2px var(--sand)}
-.chero-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
-  width:clamp(96px,13vw,150px);aspect-ratio:3/5;border-radius:999px;overflow:hidden;
-  box-shadow:0 30px 70px -22px rgba(0,0,0,.75);border:2px solid rgba(231,173,114,.35);
-  transition:transform .4s var(--ease)}
-.chero-portrait:hover{transform:translate(-50%,-50%) scale(1.06)}
-.chero-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.chero-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-47%);z-index:3;
+  height:clamp(360px,66vh,700px);width:auto;pointer-events:none;
+  filter:drop-shadow(0 34px 60px rgba(0,0,0,.55))}
+.chero-portrait img{height:100%;width:auto;object-fit:contain;display:block;background:transparent}
 .chero-tagline{margin-top:clamp(26px,4vw,40px);font-size:clamp(15px,1.9vw,20px);color:rgba(246,237,225,.75);font-weight:400;max-width:520px;margin-inline:auto}
 .chero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(246,237,225,.5);transition:color .25s}
 .chero-scroll:hover{color:var(--sand)}
@@ -112,6 +110,36 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 .chip{display:inline-flex;align-items:center;gap:10px;background:var(--forest);border:1px solid rgba(231,173,114,.2);border-radius:99px;padding:11px 18px;font-size:15px;font-weight:600;color:var(--cream);transition:background .25s,color .25s,border-color .25s}
 .chip:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
 .chip svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ============ CERTIFICATES — expanding panels ============ */
+.edu-head{text-align:center;max-width:640px;margin:0 auto clamp(38px,5vw,56px)}
+.edu-head .eyebrow{justify-content:center}
+.edu-head .eyebrow::after{content:"";width:34px;height:2px;background:var(--sand)}
+.edu-head .lead{margin-inline:auto}
+.panels{display:flex;gap:10px;height:clamp(320px,52vh,440px)}
+.panel{position:relative;flex:1 1 0%;min-width:56px;border-radius:16px;overflow:hidden;cursor:pointer;
+  border:2px solid rgba(231,173,114,.15);background:var(--forest);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;transform:translateX(26px);
+  transition:flex .6s var(--ease),border-color .4s,box-shadow .4s,opacity .6s var(--ease),transform .6s var(--ease)}
+.panel.pin{opacity:1;transform:none}
+.panel.active{flex:7 1 0%;border-color:var(--sand);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.panel-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.15);transition:transform .8s var(--ease)}
+.panel.active .panel-bg{transform:scale(1)}
+.panel-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,20,18,.92) 0%,rgba(15,20,18,.2) 48%,transparent 72%)}
+.panel-label{position:absolute;inset-inline:0;bottom:16px;z-index:2;display:flex;align-items:center;gap:12px;padding:0 16px}
+.panel-ico{width:44px;height:44px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;color:var(--sand);
+  background:rgba(20,26,24,.82);backdrop-filter:blur(8px);border:1.5px solid rgba(231,173,114,.4)}
+.panel-ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9}
+.panel-info{min-width:0;white-space:nowrap;overflow:hidden;opacity:0;transform:translateX(18px);transition:opacity .5s var(--ease) .12s,transform .5s var(--ease) .12s}
+.panel.active .panel-info{opacity:1;transform:none}
+.panel-info b{display:block;font-size:16px;font-weight:800;color:var(--white)}
+.panel-info span{font-size:13px;color:rgba(246,237,225,.75)}
+@media(max-width:700px){
+  .panels{flex-direction:column;gap:10px;height:auto}
+  .panel{flex:0 0 auto;height:66px;min-width:0;transform:translateY(24px);
+    transition:height .6s var(--ease),border-color .4s,box-shadow .4s,opacity .6s var(--ease),transform .6s var(--ease)}
+  .panel.active{flex:0 0 auto;height:300px}
+}
 
 /* ============ TESTIMONIALS CAROUSEL ============ */
 .tcar-head{text-align:center;max-width:620px;margin:0 auto clamp(38px,5vw,54px)}
@@ -188,8 +216,8 @@ footer{background:var(--forest);padding:clamp(48px,7vw,72px) 0 32px;border-top:1
     <div class="chero-name">
       <span class="line blur-in">کسری</span>
       <div class="chero-portrait blur-in">
-        <!-- swap this with the coach's portrait (600×1000, 3:5, WebP) -->
-        <img src="https://boulderland.ir/wp-content/uploads/2026/07/kasra-rouhani.webp" alt="کسری روحانی، سرمربی باشگاه بلدرلند" />
+        <!-- transparent-background coach cutout (600×1000, 3:5, WebP) -->
+        <img src="coach-kasra-rouhani.webp" alt="کسری روحانی، سرمربی باشگاه بلدرلند" />
       </div>
       <span class="line blur-in">روحانی</span>
     </div>
@@ -249,30 +277,52 @@ footer{background:var(--forest);padding:clamp(48px,7vw,72px) 0 32px;border-top:1
 
 <!-- ============ تحصیلات و مدارک ============ -->
 <section class="cs" id="education">
-  <div class="wrap cs-grid">
-    <div class="cs-media reveal">
-      <div class="imgslot ar45">
-        <svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
-        <span class="isshape">تصویر مدرک / پرتره</span>
-        <span class="isdim">800 × 1000 px · 4:5 · WebP</span>
-      </div>
-    </div>
-    <div class="reveal">
+  <div class="wrap">
+    <div class="edu-head reveal">
       <div class="eyebrow">تحصیلات و مدارک</div>
       <h2>دانش پشت هر حرکت</h2>
-      <p class="lead">مدارک رسمی مربیگری، داوری و تحصیلات مرتبط. <em>(نمونه؛ با مدارک واقعی مربی جایگزین شود.)</em></p>
-      <div class="cards">
-        <div class="dcard">
-          <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
-          <div><h3>مربیگری درجه یک فدراسیون سنگ‌نوردی</h3><p>فدراسیون کوهنوردی و صعودهای ورزشی</p></div>
+      <p class="lead">روی هر مدرک بزنید تا باز شود. <em>(تصاویر نمونه‌اند؛ با اسکن مدارک واقعی جایگزین شوند.)</em></p>
+    </div>
+
+    <div class="panels" id="certPanels">
+      <div class="panel active">
+        <div class="panel-bg" style="background-image:url('https://boulderland.ir/wp-content/uploads/2026/07/kasra-2.webp')"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-label">
+          <span class="panel-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+          <div class="panel-info"><b>مربیگری درجه یک</b><span>فدراسیون کوهنوردی و صعودهای ورزشی</span></div>
         </div>
-        <div class="dcard">
-          <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg></span>
-          <div><h3>داوری بین‌المللی مسابقات</h3><p>گواهی طراحی مسیر و داوری IFSC</p></div>
+      </div>
+      <div class="panel">
+        <div class="panel-bg" style="background-image:url('https://boulderland.ir/wp-content/uploads/2026/07/Lead-wall.webp')"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-label">
+          <span class="panel-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg></span>
+          <div class="panel-info"><b>داوری بین‌المللی</b><span>گواهی داوری و طراحی مسیر IFSC</span></div>
         </div>
-        <div class="dcard">
-          <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
-          <div><h3>کارشناسی تربیت بدنی</h3><p>دانشگاه تهران</p></div>
+      </div>
+      <div class="panel">
+        <div class="panel-bg" style="background-image:url('https://boulderland.ir/wp-content/uploads/2026/07/moonboard.webp')"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-label">
+          <span class="panel-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.6 6.6a1.5 1.5 0 0 0 2.1 2.1l6.6-6.6a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1z"/></svg></span>
+          <div class="panel-info"><b>گواهی طراحی مسیر</b><span>دوره‌ی تخصصی طراحی مسیر باشگاهی</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-bg" style="background-image:url('https://boulderland.ir/wp-content/uploads/2026/07/hero.webp')"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-label">
+          <span class="panel-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span>
+          <div class="panel-info"><b>کارشناسی تربیت بدنی</b><span>دانشگاه تهران</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-bg" style="background-image:url('https://boulderland.ir/wp-content/uploads/2026/07/spraywall.png')"></div>
+        <div class="panel-shade"></div>
+        <div class="panel-label">
+          <span class="panel-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8l-1 9 4 3-7 8-7-8 4-3z"/></svg></span>
+          <div class="panel-info"><b>کمک‌های اولیه و ایمنی</b><span>گواهی امداد و ایمنی ورزشی</span></div>
         </div>
       </div>
     </div>
@@ -392,6 +442,21 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passi
 // scroll reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// certificate expanding panels
+(()=>{
+  const wrap=document.getElementById('certPanels');
+  if(!wrap)return;
+  const panels=[...wrap.querySelectorAll('.panel')];
+  panels.forEach(p=>p.addEventListener('click',()=>{
+    panels.forEach(x=>x.classList.remove('active'));
+    p.classList.add('active');
+  }));
+  const enter=()=>panels.forEach((p,i)=>setTimeout(()=>p.classList.add('pin'),150*i));
+  const io3=new IntersectionObserver((en,ob)=>en.forEach(e=>{if(e.isIntersecting){enter();ob.disconnect()}}),{threshold:.2});
+  io3.observe(wrap);
+  setTimeout(()=>panels.forEach(p=>p.classList.add('pin')),2500); // safety net
+})();
 
 // testimonials carousel (transform-based, RTL-safe)
 (()=>{
