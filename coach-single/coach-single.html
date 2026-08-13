@@ -92,49 +92,59 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 .blur-in{filter:blur(12px);opacity:0;transform:translateY(-18px);transition:filter .6s var(--ease),opacity .6s var(--ease),transform .6s var(--ease)}
 .blur-in.shown{filter:blur(0);opacity:1;transform:none}
 
-/* ============ 3D INTERACTIVE TIMELINE ============ */
-.tl-sec{padding:clamp(64px,10vw,120px) 0;background:var(--ink2)}
-.tl-head{margin-bottom:clamp(40px,6vw,64px);text-align:left}
-.tl-head .eyebrow{margin-bottom:16px}
-.tl-head h2{font-size:clamp(28px,4.4vw,50px);font-weight:900;color:var(--white);letter-spacing:-1px}
-.tl3d{position:relative;max-width:1040px;margin:0 auto;perspective:1600px}
-.tl3d-line{position:absolute;top:12px;bottom:12px;left:50%;transform:translateX(-50%);width:2px;background:rgba(231,173,114,.16);border-radius:2px;overflow:hidden}
-.tl3d-line-fill{position:absolute;top:0;left:0;width:100%;height:0;background:linear-gradient(var(--sand),var(--moss))}
-.tl3d-item{position:relative;display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;margin-bottom:clamp(30px,5vw,62px)}
-.tl3d-item:last-child{margin-bottom:0}
-.tl3d-node{grid-column:2;justify-self:center;z-index:3;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
-  background:var(--forest);border:2px solid rgba(231,173,114,.4);color:var(--sand);
+/* ============ PINNED 3D TIMELINE ============ */
+.tl-sec{position:relative;height:calc(var(--steps,4) * 100vh);background:var(--ink2)}
+.tl-sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.tl-sticky>.wrap{width:100%}
+.tl-head{margin-bottom:clamp(20px,3.5vh,40px);text-align:left}
+.tl-head .eyebrow{margin-bottom:14px}
+.tl-head h2{font-size:clamp(24px,3.6vw,44px);font-weight:900;color:var(--white);letter-spacing:-1px}
+
+.tl-stage{position:relative;display:grid;grid-template-columns:minmax(190px,238px) 1fr;gap:clamp(24px,4vw,64px);align-items:center;perspective:1600px}
+
+/* spine (physical right in RTL) */
+.tl-spine{position:relative;grid-column:1;height:min(64vh,520px);display:flex;flex-direction:column;justify-content:space-between;padding:6px 0}
+.tl-spine-line{position:absolute;top:32px;bottom:32px;right:25px;width:2px;background:rgba(231,173,114,.16);border-radius:2px;overflow:hidden;z-index:0}
+.tl-spine-fill{position:absolute;top:0;left:0;width:100%;height:var(--p,0%);background:linear-gradient(var(--sand),var(--moss));transition:height .35s var(--ease)}
+.tl-tick{position:relative;z-index:1;display:flex;flex-direction:row-reverse;align-items:center;gap:14px;width:100%;padding:0;background:none;border:0;cursor:pointer;color:inherit;font-family:inherit}
+.tl-dot{flex:0 0 auto;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--forest);border:2px solid rgba(231,173,114,.4);color:var(--sand);
   transition:background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
-.tl3d-node svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9}
-.tl3d-item.on .tl3d-node{background:var(--sand);border-color:var(--sand);color:var(--forest);transform:scale(1.1);box-shadow:0 0 0 7px rgba(231,173,114,.15)}
-.tl3d-card{grid-column:1;transform-style:preserve-3d;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
-  background:var(--forest);border:1px solid rgba(231,173,114,.16);border-radius:20px;overflow:hidden;
-  box-shadow:0 22px 55px -30px rgba(0,0,0,.7);will-change:transform}
-.tl3d-item.right .tl3d-card{grid-column:3}
-.tl3d-card:hover{border-color:rgba(231,173,114,.5)}
-.tl3d-img{position:relative;aspect-ratio:16/9;overflow:hidden;transform:translateZ(28px)}
-.tl3d-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.tl3d-card:hover .tl3d-img img{transform:scale(1.06)}
-.tl3d-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(60,75,72,.5),transparent 55%)}
-.tl3d-body{padding:22px 24px 24px;transform:translateZ(40px)}
-.tl3d-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.tl3d-cat{font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--forest);background:var(--sand);padding:4px 11px;border-radius:99px}
-.tl3d-date{font-family:'Anton',sans-serif;font-size:16px;color:var(--sand);letter-spacing:.5px}
-.tl3d-body h3{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--white);margin-bottom:8px}
-.tl3d-body p{font-size:14.5px;color:rgba(246,237,225,.78);font-weight:300;line-height:1.75}
-.tl3d-link{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:14px;font-weight:700;color:var(--sand);transition:gap .25s}
-.tl3d-link:hover{gap:12px}
-.tl3d-link svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2}
-/* entrance */
-.tl3d-item .tl3d-card{opacity:0;transform:translateY(34px) rotateX(8deg)}
-.tl3d-item.in .tl3d-card{opacity:1;transform:none}
+.tl-dot svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9}
+.tl-tickinfo{text-align:right;line-height:1.3}
+.tl-tickdate{display:block;font-family:'Anton',sans-serif;font-size:18px;color:var(--sand);letter-spacing:.5px}
+.tl-ticklbl{display:block;font-size:12.5px;font-weight:600;color:rgba(246,237,225,.55);transition:color .4s var(--ease)}
+.tl-tick.on .tl-dot{background:var(--sand);border-color:var(--sand);color:var(--forest)}
+.tl-tick.on .tl-ticklbl{color:var(--cream)}
+.tl-tick.now .tl-dot{transform:scale(1.12);box-shadow:0 0 0 7px rgba(231,173,114,.15)}
+
+/* card region (physical left) */
+.tl-cards{position:relative;grid-column:2;height:min(64vh,520px)}
+.tl-card{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--forest);border:1px solid rgba(231,173,114,.16);border-radius:20px;overflow:hidden;
+  box-shadow:0 22px 55px -30px rgba(0,0,0,.7);transform-style:preserve-3d;transition:opacity .5s var(--ease),transform .5s var(--ease);
+  opacity:0;transform:translateY(26px) scale(.985);pointer-events:none;will-change:transform,opacity}
+.tl-card.is-active{opacity:1;transform:none;pointer-events:auto;z-index:2}
+.tl-card-img{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;transform:translateZ(26px)}
+.tl-card-img img{width:100%;height:100%;object-fit:cover}
+.tl-card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(60,75,72,.55),transparent 55%)}
+.tl-card-body{flex:0 0 auto;padding:20px 26px 24px;transform:translateZ(40px)}
+.tl-card-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tl-card-cat{font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--forest);background:var(--sand);padding:4px 11px;border-radius:99px}
+.tl-card-date{font-family:'Anton',sans-serif;font-size:16px;color:var(--sand);letter-spacing:.5px}
+.tl-card-body h3{font-size:clamp(19px,2.4vw,25px);font-weight:800;color:var(--white);margin-bottom:8px}
+.tl-card-body p{font-size:14.5px;color:rgba(246,237,225,.8);font-weight:300;line-height:1.75}
+
 @media(max-width:760px){
-  .tl3d-line{left:26px}
-  .tl3d-item{grid-template-columns:52px 1fr;column-gap:18px}
-  .tl3d-node{grid-column:1}
-  .tl3d-card,.tl3d-item.right .tl3d-card{grid-column:2}
+  .tl-stage{grid-template-columns:1fr;gap:18px}
+  .tl-cards{grid-column:1;order:1;height:min(52vh,420px)}
+  .tl-spine{grid-column:1;order:2;flex-direction:row;justify-content:space-between;height:auto;padding:0}
+  .tl-spine-line{top:25px;bottom:auto;left:20px;right:20px;height:2px;width:auto}
+  .tl-spine-fill{top:0;right:0;left:auto;width:var(--p,0%);height:100%;transition:width .35s var(--ease)}
+  .tl-tick{flex-direction:column;gap:8px;width:auto;text-align:center}
+  .tl-tickinfo{text-align:center}
+  .tl-ticklbl{display:none}
+  .tl-card-body{padding:16px 18px 18px}
 }
-@media(prefers-reduced-motion:reduce){.tl3d-item .tl3d-card{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.tl-card{transition:opacity .2s linear}.tl-spine-fill{transition:none}}
 
 /* ============ SECTION SCAFFOLD ============ */
 .cs{padding:clamp(70px,11vw,130px) 0}
@@ -310,61 +320,72 @@ footer{background:var(--forest);padding:clamp(48px,7vw,72px) 0 32px;border-top:1
 </section>
 
 <!-- ============ سابقه سنگ‌نوردی — 3D interactive timeline ============ -->
-<section class="cs tl-sec" id="climbing">
-  <div class="wrap">
-    <div class="tl-head reveal">
-      <div class="eyebrow">سابقه سنگ‌نوردی</div>
-      <h2>مسیری از دیواره تا سکوی قهرمانی</h2>
-    </div>
-    <div class="tl3d" id="tl3d">
-      <span class="tl3d-line"><span class="tl3d-line-fill" id="tlFill"></span></span>
-
-      <div class="tl3d-item left">
-        <div class="tl3d-card">
-          <div class="tl3d-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/kasra-2.webp" alt="آغاز سنگ‌نوردی" /></div>
-          <div class="tl3d-body">
-            <div class="tl3d-meta"><span class="tl3d-cat">شروع</span><span class="tl3d-date">۱۳۹۰</span></div>
-            <h3>آغاز مسیر</h3>
-            <p>شروع سنگ‌نوردی حرفه‌ای روی دیواره‌های سالنی و اولین صعودهای جدی که شالوده‌ی این مسیر را ساختند.</p>
-          </div>
-        </div>
-        <span class="tl3d-node"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 5-11 4 6 3-4 4 9"/><circle cx="9" cy="7" r="1.4"/></svg></span>
+<section class="tl-sec" id="climbing" style="--steps:4">
+  <div class="tl-sticky">
+    <div class="wrap">
+      <div class="tl-head">
+        <div class="eyebrow">سابقه سنگ‌نوردی</div>
+        <h2>مسیری از دیواره تا سکوی قهرمانی</h2>
       </div>
+      <div class="tl-stage" id="tl3d">
 
-      <div class="tl3d-item right">
-        <div class="tl3d-card">
-          <div class="tl3d-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/mammad.webp" alt="تیم ملی" /></div>
-          <div class="tl3d-body">
-            <div class="tl3d-meta"><span class="tl3d-cat">تیم ملی</span><span class="tl3d-date">۱۳۹۴</span></div>
-            <h3>عضویت در تیم ملی</h3>
-            <p>راه‌یابی به تیم ملی سنگ‌نوردی و حضور در اردوها و رقابت‌های سطح اول کشور.</p>
-          </div>
+        <!-- spine -->
+        <div class="tl-spine">
+          <span class="tl-spine-line"><span class="tl-spine-fill" id="tlFill"></span></span>
+          <button class="tl-tick" type="button" data-i="0">
+            <span class="tl-dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 5-11 4 6 3-4 4 9"/><circle cx="9" cy="7" r="1.4"/></svg></span>
+            <span class="tl-tickinfo"><span class="tl-tickdate">۱۳۹۰</span><span class="tl-ticklbl">آغاز مسیر</span></span>
+          </button>
+          <button class="tl-tick" type="button" data-i="1">
+            <span class="tl-dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m5 9 7-7 7 7"/></svg></span>
+            <span class="tl-tickinfo"><span class="tl-tickdate">۱۳۹۴</span><span class="tl-ticklbl">تیم ملی</span></span>
+          </button>
+          <button class="tl-tick" type="button" data-i="2">
+            <span class="tl-dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg></span>
+            <span class="tl-tickinfo"><span class="tl-tickdate">۱۳۹۷</span><span class="tl-ticklbl">قهرمانی کشوری</span></span>
+          </button>
+          <button class="tl-tick" type="button" data-i="3">
+            <span class="tl-dot"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span>
+            <span class="tl-tickinfo"><span class="tl-tickdate">۱۴۰۱</span><span class="tl-ticklbl">بین‌المللی</span></span>
+          </button>
         </div>
-        <span class="tl3d-node"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m5 9 7-7 7 7"/></svg></span>
-      </div>
 
-      <div class="tl3d-item left">
-        <div class="tl3d-card">
-          <div class="tl3d-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/boy.webp" alt="قهرمانی کشوری" /></div>
-          <div class="tl3d-body">
-            <div class="tl3d-meta"><span class="tl3d-cat">افتخار</span><span class="tl3d-date">۱۳۹۷</span></div>
-            <h3>مدال قهرمانی کشوری</h3>
-            <p>کسب مدال قهرمانی مسابقات کشوری بولدرینگ؛ نقطه‌ی عطفی که نام او را سر زبان‌ها انداخت.</p>
-          </div>
+        <!-- cards -->
+        <div class="tl-cards">
+          <article class="tl-card is-active" data-i="0">
+            <div class="tl-card-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/kasra-2.webp" alt="آغاز سنگ‌نوردی" /></div>
+            <div class="tl-card-body">
+              <div class="tl-card-meta"><span class="tl-card-cat">شروع</span><span class="tl-card-date">۱۳۹۰</span></div>
+              <h3>آغاز مسیر</h3>
+              <p>شروع سنگ‌نوردی حرفه‌ای روی دیواره‌های سالنی و اولین صعودهای جدی که شالوده‌ی این مسیر را ساختند.</p>
+            </div>
+          </article>
+          <article class="tl-card" data-i="1">
+            <div class="tl-card-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/mammad.webp" alt="تیم ملی" /></div>
+            <div class="tl-card-body">
+              <div class="tl-card-meta"><span class="tl-card-cat">تیم ملی</span><span class="tl-card-date">۱۳۹۴</span></div>
+              <h3>عضویت در تیم ملی</h3>
+              <p>راه‌یابی به تیم ملی سنگ‌نوردی و حضور در اردوها و رقابت‌های سطح اول کشور.</p>
+            </div>
+          </article>
+          <article class="tl-card" data-i="2">
+            <div class="tl-card-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/boy.webp" alt="قهرمانی کشوری" /></div>
+            <div class="tl-card-body">
+              <div class="tl-card-meta"><span class="tl-card-cat">افتخار</span><span class="tl-card-date">۱۳۹۷</span></div>
+              <h3>مدال قهرمانی کشوری</h3>
+              <p>کسب مدال قهرمانی مسابقات کشوری بولدرینگ؛ نقطه‌ی عطفی که نام او را سر زبان‌ها انداخت.</p>
+            </div>
+          </article>
+          <article class="tl-card" data-i="3">
+            <div class="tl-card-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/Lead-wall.webp" alt="ملی‌پوش" /></div>
+            <div class="tl-card-body">
+              <div class="tl-card-meta"><span class="tl-card-cat">بین‌المللی</span><span class="tl-card-date">۱۴۰۱</span></div>
+              <h3>ملی‌پوش و صعودهای برون‌مرزی</h3>
+              <p>سال‌ها ملی‌پوشی و ثبت صعودهای شاخص در دیواره‌های طبیعی و مسابقات بین‌المللی.</p>
+            </div>
+          </article>
         </div>
-        <span class="tl3d-node"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg></span>
-      </div>
 
-      <div class="tl3d-item right">
-        <div class="tl3d-card">
-          <div class="tl3d-img"><img src="https://boulderland.ir/wp-content/uploads/2026/07/Lead-wall.webp" alt="ملی‌پوش" /></div>
-          <div class="tl3d-body">
-            <div class="tl3d-meta"><span class="tl3d-cat">بین‌المللی</span><span class="tl3d-date">۱۴۰۱</span></div>
-            <h3>ملی‌پوش و صعودهای برون‌مرزی</h3>
-            <p>سال‌ها ملی‌پوشی و ثبت صعودهای شاخص در دیواره‌های طبیعی و مسابقات بین‌المللی.</p>
-          </div>
-        </div>
-        <span class="tl3d-node"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span>
       </div>
     </div>
   </div>
@@ -558,38 +579,47 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passi
   mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
 })();
 
-// 3D interactive timeline — scroll reveal, line fill, cursor tilt
+// pinned 3D timeline — scroll advances milestones within one viewport
 (()=>{
-  const tl=document.getElementById('tl3d');
-  if(!tl)return;
-  const items=[...tl.querySelectorAll('.tl3d-item')];
+  const sec=document.getElementById('climbing');
+  if(!sec)return;
+  const cards=[...sec.querySelectorAll('.tl-card')];
+  const ticks=[...sec.querySelectorAll('.tl-tick')];
   const fill=document.getElementById('tlFill');
+  const N=cards.length, steps=Math.max(N-1,1);
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let cur=-1;
 
-  // reveal each item + mark node active as it enters
-  const io3=new IntersectionObserver((en)=>en.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('in');   // reveal once
-    e.target.classList.toggle('on',e.isIntersecting);   // node highlight follows viewport
-  }),{threshold:.35});
-  items.forEach(it=>io3.observe(it));
-
-  // scroll-fill of the central line
-  function fillLine(){
-    const r=tl.getBoundingClientRect(), h=window.innerHeight;
-    const p=Math.min(Math.max((h*0.55-r.top)/(r.height),0),1);
-    fill.style.height=(p*100).toFixed(1)+'%';
+  function setActive(i){
+    if(i===cur)return;cur=i;
+    cards.forEach((c,k)=>{const a=k===i;c.classList.toggle('is-active',a);if(!a)c.style.transform='';});
+    ticks.forEach((t,k)=>{t.classList.toggle('on',k<=i);t.classList.toggle('now',k===i);});
   }
-  addEventListener('scroll',fillLine,{passive:true});
-  addEventListener('resize',fillLine);
-  fillLine();
+  function update(){
+    const total=sec.offsetHeight-window.innerHeight;
+    const done=Math.min(Math.max(-sec.getBoundingClientRect().top,0),total);
+    const p=total>0?done/total:0;
+    fill.style.setProperty('--p',(p*100).toFixed(1)+'%');
+    setActive(Math.min(Math.round(p*steps),N-1));
+  }
+  addEventListener('scroll',update,{passive:true});
+  addEventListener('resize',update);
+  update();
 
-  // 3D tilt following cursor (desktop, motion allowed)
+  // click a tick to jump to that milestone
+  ticks.forEach((t,i)=>t.addEventListener('click',()=>{
+    const total=sec.offsetHeight-window.innerHeight;
+    scrollTo({top:sec.offsetTop+(i/steps)*total,behavior:'smooth'});
+  }));
+
+  // 3D tilt following cursor on the active card (desktop, motion allowed)
   if(!reduce && matchMedia('(pointer:fine)').matches){
-    tl.querySelectorAll('.tl3d-card').forEach(card=>{
+    cards.forEach(card=>{
       card.addEventListener('mousemove',e=>{
+        if(!card.classList.contains('is-active'))return;
         const b=card.getBoundingClientRect();
-        const rx=((e.clientY-b.top)/b.height-.5)*-8;
-        const ry=((e.clientX-b.left)/b.width-.5)*10;
+        const rx=((e.clientY-b.top)/b.height-.5)*-7;
+        const ry=((e.clientX-b.left)/b.width-.5)*9;
         card.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg) translateY(-4px)';
       });
       card.addEventListener('mouseleave',()=>{card.style.transform='';});
