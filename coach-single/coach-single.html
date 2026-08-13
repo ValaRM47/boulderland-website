@@ -65,26 +65,29 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 @media(max-width:820px){.nav-links{display:none}.nav-toggle{display:block}.nav .btn-primary{display:none}}
 
 /* ============ MINIMALIST HERO (3-column) ============ */
-.mhero{position:relative;height:100svh;background:var(--moss);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  padding:clamp(88px,11vh,120px) clamp(24px,5vw,52px) clamp(28px,4.5vh,48px)}
-/* main 3-col grid: bio (left) · figure (center) · name (right) */
-.mhero-main{position:relative;width:100%;max-width:var(--maxw);flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(16px,3vw,40px);direction:ltr}
-.mhero-bio{grid-column:1;z-index:2;max-width:300px;justify-self:start;direction:rtl;text-align:right}
+.mhero{position:relative;height:100svh;background:var(--moss);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:clamp(88px,11vh,120px) clamp(24px,5vw,52px) 0}
+/* main row: bio (left edge) · figure (page center, absolute) · name (right edge) */
+.mhero-main{position:relative;width:100%;flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);direction:ltr}
+.mhero-bio{position:relative;z-index:3;flex:0 0 auto;max-width:300px;direction:rtl;text-align:right}
 .mhero-bio p{font-size:clamp(13px,1.4vw,15px);line-height:1.75;color:rgba(253,251,247,.82)}
 .mhero-more{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:14px;font-weight:700;color:var(--cream);border-bottom:2px solid var(--cream);padding-bottom:2px;transition:gap .25s}
 .mhero-more:hover{gap:12px}
 .mhero-more svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.4}
-/* center figure: sand circle behind the cutout */
-.mhero-figure{grid-column:2;position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center;height:100%}
-.mhero-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;border-radius:50%;background:var(--sand);
-  width:min(48vh,460px);height:min(48vh,460px)}
-.mhero-portrait{position:relative;z-index:1;height:min(80vh,760px);width:auto;pointer-events:none;filter:drop-shadow(0 30px 55px rgba(20,30,28,.4))}
+/* layered figure: circle (back) · name (mid) · portrait (front) — display:contents lets the
+   circle & portrait become independent layers around the name */
+.mhero-figure{display:contents}
+.mhero-circle{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);z-index:0;border-radius:50%;background:var(--sand);
+  width:min(50vh,480px);height:min(50vh,480px)}
+/* enlarged cutout, centered & anchored to the very bottom, IN FRONT of the name */
+.mhero-portrait{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:2;height:min(90vh,880px);width:auto;pointer-events:none;filter:drop-shadow(0 30px 55px rgba(20,30,28,.4))}
 .mhero-portrait img{height:100%;width:auto;object-fit:contain;display:block;background:transparent}
-/* right name column */
-.mhero-name{grid-column:3;z-index:2;justify-self:end;direction:rtl;display:flex;align-items:center;justify-content:flex-start}
-.mhero-title{font-weight:800;line-height:.9;letter-spacing:-2px;color:var(--cream);font-size:clamp(56px,9vw,140px);white-space:nowrap;text-align:right}
-/* footer: social (left) · location (right) */
-.mhero-footer{position:relative;z-index:3;width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;gap:20px;direction:ltr}
+/* huge name on the right, BEHIND the portrait (person overlaps the letters) */
+.mhero-name{z-index:1;flex:0 0 auto;direction:rtl;display:flex;align-items:center;justify-content:flex-end}
+.mhero-title{font-weight:900;line-height:.82;letter-spacing:-3px;color:var(--cream);font-size:clamp(64px,13vw,200px);white-space:nowrap;text-align:right}
+/* footer: social (left) · location (right) — floats over the bottom of the image */
+.mhero-footer{position:absolute;bottom:clamp(24px,4vh,44px);left:0;right:0;width:100%;z-index:3;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(24px,5vw,52px);direction:ltr}
 .mhero-loc{direction:rtl}
 .mhero-social{display:flex;gap:16px}
 .mhero-social a{color:rgba(253,251,247,.62);transition:color .2s,transform .2s}
@@ -92,15 +95,15 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 .mhero-social svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9}
 .mhero-loc{font-size:13px;font-weight:600;letter-spacing:.5px;color:rgba(253,251,247,.82)}
 @media(max-width:820px){
-  .mhero{height:auto;min-height:100svh;justify-content:flex-start;gap:clamp(18px,3vh,34px);padding-top:clamp(100px,14vh,134px);padding-bottom:clamp(32px,5vh,52px)}
-  .mhero-main{grid-template-columns:1fr;justify-items:center;gap:clamp(12px,2.5vh,26px);flex:0 0 auto}
-  .mhero-figure{order:1;grid-column:1;height:auto}
-  .mhero-portrait{height:min(42vh,400px)}
+  .mhero{height:auto;min-height:100svh;justify-content:flex-start;gap:clamp(18px,3vh,34px);padding:clamp(100px,14vh,134px) clamp(24px,5vw,52px) clamp(32px,5vh,52px)}
+  .mhero-main{flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(12px,2.5vh,26px);flex:0 0 auto}
+  .mhero-figure{display:block;position:relative;order:1;height:auto}
+  .mhero-portrait{position:relative;left:auto;bottom:auto;transform:none;z-index:1;height:min(42vh,400px)}
   .mhero-circle{width:min(30vh,300px);height:min(30vh,300px)}
-  .mhero-name{order:2;grid-column:1;justify-self:center;justify-content:center}
+  .mhero-name{order:2;z-index:2;justify-content:center;margin-top:clamp(8px,2vh,20px)}
   .mhero-title{text-align:center;font-size:clamp(52px,15vw,104px)}
-  .mhero-bio{order:3;grid-column:1;justify-self:center;text-align:center;max-width:360px}
-  .mhero-footer{margin-top:clamp(20px,4vh,36px)}
+  .mhero-bio{order:3;text-align:center;max-width:360px}
+  .mhero-footer{position:static;margin:clamp(20px,4vh,36px) 0 0;padding:0;max-width:none}
 }
 
 /* blur reveal */
@@ -331,7 +334,7 @@ footer{background:var(--forest);padding:clamp(48px,7vw,72px) 0 32px;border-top:1
     <!-- figure (center): sand circle + cutout -->
     <div class="mhero-figure">
       <span class="mhero-circle"></span>
-      <div class="mhero-portrait blur-in">
+      <div class="mhero-portrait">
         <img src="coach-kasra-rouhani.webp" alt="کسری روحانی، سرمربی باشگاه بلدرلند" />
       </div>
     </div>
