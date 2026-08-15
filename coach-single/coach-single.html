@@ -64,46 +64,28 @@ header.nav.scrolled{background:rgba(20,26,24,.82);backdrop-filter:blur(14px);pad
 .mobile-close svg{width:34px;height:34px}
 @media(max-width:820px){.nav-links{display:none}.nav-toggle{display:block}.nav .btn-primary{display:none}}
 
-/* ============ MINIMALIST HERO (3-column) ============ */
-.mhero{position:relative;height:100svh;background:var(--moss);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  padding:clamp(88px,11vh,120px) clamp(24px,5vw,52px) 0}
-/* main row: bio (left edge) · figure (page center, absolute) · name (right edge) */
-.mhero-main{position:relative;width:100%;flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);direction:ltr}
-.mhero-bio{position:relative;z-index:3;flex:0 0 auto;max-width:300px;direction:rtl;text-align:right}
-.mhero-bio p{font-size:clamp(13px,1.4vw,15px);line-height:1.75;color:rgba(253,251,247,.82)}
-.mhero-more{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:14px;font-weight:700;color:var(--cream);border-bottom:2px solid var(--cream);padding-bottom:2px;transition:gap .25s}
-.mhero-more:hover{gap:12px}
-.mhero-more svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.4}
-/* layered figure: circle (back) · name (mid) · portrait (front) — display:contents lets the
-   circle & portrait become independent layers around the name */
-.mhero-figure{display:contents}
-.mhero-circle{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);z-index:0;border-radius:50%;background:var(--sand);
-  width:min(50vh,480px);height:min(50vh,480px)}
-/* enlarged cutout, centered & anchored to the very bottom, IN FRONT of the name */
-.mhero-portrait{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:2;height:min(90vh,880px);width:auto;pointer-events:none;filter:drop-shadow(0 30px 55px rgba(20,30,28,.4))}
-.mhero-portrait img{height:100%;width:auto;object-fit:contain;display:block;background:transparent}
-/* huge name on the right, BEHIND the portrait (person overlaps the letters) */
-.mhero-name{z-index:1;flex:0 0 auto;direction:rtl;display:flex;align-items:center;justify-content:flex-end}
-.mhero-title{font-weight:900;line-height:.82;letter-spacing:-3px;color:var(--cream);font-size:clamp(64px,13vw,200px);white-space:nowrap;text-align:right}
-/* footer: social (left) · location (right) — floats over the bottom of the image */
-.mhero-footer{position:absolute;bottom:clamp(24px,4vh,44px);left:0;right:0;width:100%;z-index:3;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(24px,5vw,52px);direction:ltr}
-.mhero-loc{direction:rtl}
-.mhero-social{display:flex;gap:16px}
-.mhero-social a{color:rgba(253,251,247,.62);transition:color .2s,transform .2s}
-.mhero-social a:hover{color:var(--cream);transform:translateY(-2px)}
-.mhero-social svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9}
-.mhero-loc{font-size:13px;font-weight:600;letter-spacing:.5px;color:rgba(253,251,247,.82)}
-@media(max-width:820px){
-  .mhero{height:auto;min-height:100svh;justify-content:flex-start;gap:clamp(18px,3vh,34px);padding:clamp(100px,14vh,134px) clamp(24px,5vw,52px) clamp(32px,5vh,52px)}
-  .mhero-main{flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(12px,2.5vh,26px);flex:0 0 auto}
-  .mhero-figure{display:block;position:relative;order:1;height:auto}
-  .mhero-portrait{position:relative;left:auto;bottom:auto;transform:none;z-index:1;height:min(42vh,400px)}
-  .mhero-circle{width:min(30vh,300px);height:min(30vh,300px)}
-  .mhero-name{order:2;z-index:2;justify-content:center;margin-top:clamp(8px,2vh,20px)}
-  .mhero-title{text-align:center;font-size:clamp(52px,15vw,104px)}
-  .mhero-bio{order:3;text-align:center;max-width:360px}
-  .mhero-footer{position:static;margin:clamp(20px,4vh,36px) 0 0;padding:0;max-width:none}
+/* ============ HERO — stacked name + circular portrait ============ */
+.khero{position:relative;min-height:100svh;background:#050505;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:clamp(110px,14vh,150px) 24px clamp(64px,9vh,96px)}
+.khero-stack{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.khero-name{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;line-height:.8;text-align:center}
+.khero-name span{font-weight:900;font-size:clamp(88px,20vw,264px);letter-spacing:-5px;color:#a8e83a}
+/* circular portrait centered over the letters, edges masked into the black */
+.khero-face{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:clamp(150px,17vw,226px);height:clamp(150px,17vw,226px);border-radius:50%;overflow:hidden;
+  -webkit-mask-image:radial-gradient(circle at 50% 47%,#000 48%,rgba(0,0,0,0) 72%);
+          mask-image:radial-gradient(circle at 50% 47%,#000 48%,rgba(0,0,0,0) 72%);
+  opacity:0;animation:faceIn 1s var(--ease) .55s forwards}
+.khero-face img{width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(1.55);transform-origin:50% 9%;display:block}
+@keyframes faceIn{to{opacity:1}}
+.khero-tag{margin-top:clamp(34px,6vh,74px);font-size:clamp(15px,1.6vw,19px);font-weight:300;color:rgba(255,255,255,.5);text-align:center;letter-spacing:.3px}
+.khero-scroll{position:absolute;bottom:clamp(22px,4vh,40px);left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.45);transition:color .25s}
+.khero-scroll:hover{color:#a8e83a}
+.khero-scroll svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.5;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:600px){
+  .khero-name span{font-size:clamp(74px,23vw,150px);letter-spacing:-3px}
+  .khero-face{width:clamp(122px,30vw,158px);height:clamp(122px,30vw,158px)}
 }
 
 /* blur reveal */
@@ -319,39 +301,21 @@ footer{background:var(--forest);padding:clamp(48px,7vw,72px) 0 32px;border-top:1
   <a href="/#contact">تماس</a>
 </div>
 
-<!-- ============ MINIMALIST HERO (3-column) ============ -->
-<section class="mhero">
-  <div class="mhero-main">
-    <!-- bio (left) -->
-    <div class="mhero-bio blur-in">
-      <p>بنیان‌گذار و سرمربی بلدرلند · طراح رسمی فدراسیون جهانی سنگ‌نوردی</p>
-      <a class="mhero-more" href="#climbing">
-        بیشتر بخوانید
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-      </a>
-    </div>
-
-    <!-- figure (center): sand circle + cutout -->
-    <div class="mhero-figure">
-      <span class="mhero-circle"></span>
-      <div class="mhero-portrait">
-        <img src="coach-kasra-rouhani.webp" alt="کسری روحانی، سرمربی باشگاه بلدرلند" />
-      </div>
-    </div>
-
-    <!-- name (right) -->
-    <div class="mhero-name blur-in">
-      <h1 class="mhero-title">کسری<br>روحانی</h1>
+<!-- ============ HERO — stacked name + circular portrait ============ -->
+<section class="khero">
+  <div class="khero-stack">
+    <h1 class="khero-name">
+      <span class="blur-in">کسری</span>
+      <span class="blur-in">روحانی</span>
+    </h1>
+    <div class="khero-face">
+      <img src="coach-kasra-rouhani.webp" alt="کسری روحانی، سرمربی باشگاه بلدرلند" />
     </div>
   </div>
-
-  <div class="mhero-footer blur-in">
-    <div class="mhero-social">
-      <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3 2 10.5l6.5 2.5L11 20l3-4.5L20 20 22 3z"/><path d="m8.5 13 9-7.5"/></svg></a>
-    </div>
-    <span class="mhero-loc">تهران · ایران</span>
-  </div>
+  <p class="khero-tag blur-in">طراحیِ تجربه‌های انسانی، روی سنگ.</p>
+  <a class="khero-scroll" href="#climbing" aria-label="اسکرول به پایین">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </a>
 </section>
 
 <!-- ============ سابقه سنگ‌نوردی — 3D interactive timeline ============ -->
@@ -664,7 +628,7 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passi
 
 // hero blur-in reveal (staggered) — IntersectionObserver + safety timeout (robust in any tab state)
 (()=>{
-  const els=[...document.querySelectorAll('.mhero .blur-in')];
+  const els=[...document.querySelectorAll('.khero .blur-in')];
   els.forEach((el,i)=>el.style.transitionDelay=(120+i*130)+'ms');
   const io2=new IntersectionObserver((en,ob)=>en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('shown');ob.unobserve(e.target)}}),{threshold:.01});
   els.forEach(el=>io2.observe(el));
