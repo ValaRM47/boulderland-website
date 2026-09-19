@@ -137,9 +137,10 @@ header.nav.scrolled{background:rgba(27,35,32,.82);backdrop-filter:blur(14px);pad
 .tst-head p{color:rgba(246,237,225,.72);font-size:16px;font-weight:300}
 .tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .tcard{display:flex;flex-direction:column;gap:16px}
-.tvid{position:relative;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;background:#000;border:1.5px solid rgba(231,173,114,.16);transition:border-color .3s,transform .4s var(--ease)}
+.tvid{position:relative;aspect-ratio:9/16;border-radius:var(--radius);overflow:hidden;background:#000;border:1.5px solid rgba(231,173,114,.16);transition:border-color .3s,transform .4s var(--ease)}
 .tcard:hover .tvid{border-color:rgba(231,173,114,.45);transform:translateY(-6px)}
 .tvid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.tvid:has(source) .play{display:none}
 .tvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:rgba(231,173,114,.92);pointer-events:none;transition:opacity .3s}
 .tvid .play svg{width:26px;height:26px;fill:var(--forest);margin-inline-start:3px}
 .tcap .name{font-size:17px;font-weight:800;color:var(--white)}
@@ -414,7 +415,7 @@ footer{background:var(--forest);padding:clamp(56px,7vw,80px) 0 36px;border-top:1
     <div class="tst-grid reveal">
       <div class="tcard">
         <div class="tvid">
-          <video controls playsinline preload="none" poster="mammad.webp"><!-- <source src="testimonial-1.mp4" type="video/mp4"> --></video>
+          <video controls playsinline preload="metadata" poster="mammad.webp"><source src="https://oulderland.ir/video" type="video/mp4"></video>
           <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
         <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
