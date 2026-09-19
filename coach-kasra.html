@@ -140,8 +140,9 @@ header.nav.scrolled{background:rgba(27,35,32,.82);backdrop-filter:blur(14px);pad
 .tvid{position:relative;aspect-ratio:9/16;border-radius:var(--radius);overflow:hidden;background:#000;border:1.5px solid rgba(231,173,114,.16);transition:border-color .3s,transform .4s var(--ease)}
 .tcard:hover .tvid{border-color:rgba(231,173,114,.45);transform:translateY(-6px)}
 .tvid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
-.tvid:has(source) .play{display:none}
-.tvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:rgba(231,173,114,.92);pointer-events:none;transition:opacity .3s}
+.tvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:66px;height:66px;border-radius:50%;border:none;padding:0;cursor:pointer;display:grid;place-items:center;background:rgba(231,173,114,.92);transition:opacity .3s var(--ease),visibility .3s var(--ease),transform .3s var(--ease),background .25s}
+.tvid .play:hover{background:var(--sand);transform:translate(-50%,-50%) scale(1.08)}
+.tvid.playing .play{opacity:0;visibility:hidden;transform:translate(-50%,-50%) scale(.8)}
 .tvid .play svg{width:26px;height:26px;fill:var(--forest);margin-inline-start:3px}
 .tcap .name{font-size:17px;font-weight:800;color:var(--white)}
 .tcap .role{font-size:14px;color:rgba(246,237,225,.65);font-weight:300;margin-top:2px}
@@ -416,21 +417,21 @@ footer{background:var(--forest);padding:clamp(56px,7vw,80px) 0 36px;border-top:1
       <div class="tcard">
         <div class="tvid">
           <video controls playsinline preload="metadata" poster="mammad.webp"><source src="https://oulderland.ir/video" type="video/mp4"></video>
-          <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </div>
         <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
       </div>
       <div class="tcard">
         <div class="tvid">
           <video controls playsinline preload="none" poster="boy.webp"><!-- <source src="testimonial-2.mp4" type="video/mp4"> --></video>
-          <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </div>
         <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
       </div>
       <div class="tcard">
         <div class="tvid">
           <video controls playsinline preload="none" poster="kasra-2.webp"><!-- <source src="testimonial-3.mp4" type="video/mp4"> --></video>
-          <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
         </div>
         <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
       </div>
@@ -544,6 +545,16 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
   modal.addEventListener('click',e=>{if(e.target===modal)close();});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
 })();
+
+// testimonial videos — play button starts the video and hides while playing
+document.querySelectorAll('.tvid').forEach(tv=>{
+  const v=tv.querySelector('video'), btn=tv.querySelector('.play');
+  if(!v||!btn)return;
+  btn.addEventListener('click',()=>{v.play().catch(()=>{});});
+  v.addEventListener('play',()=>tv.classList.add('playing'));
+  v.addEventListener('pause',()=>tv.classList.remove('playing'));
+  v.addEventListener('ended',()=>tv.classList.remove('playing'));
+});
 </script>
 </body>
 </html>
