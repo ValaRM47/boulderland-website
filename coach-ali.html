@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>علی مقنی زاده | مربی بلدرلند</title>
+<meta name="description" content="علی مقنی زاده، مربی باشگاه سنگ‌نوردی بلدرلند. کارشناسی ارشد تربیت بدنی دانشگاه تهران با بیش از ۱۰ سال سابقه‌ی سنگ‌نوردی و مربیگری." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --sand:#e7ad72; --forest:#3c4b48; --moss:#3f6356; --cream:#e2c2a1;
+  --ink:#202927; --ink2:#1b2320; --white:#fdfbf7;
+  --radius:22px; --ease:cubic-bezier(.22,1,.36,1); --maxw:1320px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+section{position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+::selection{background:var(--sand);color:var(--forest)}
+.display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:14px 28px;border-radius:99px;transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+.btn-primary{background:var(--sand);color:var(--forest)}
+.btn-primary:hover{background:var(--cream);box-shadow:0 12px 30px -10px rgba(231,173,114,.6);transform:translateY(-2px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(231,173,114,.5)}
+.btn-ghost:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+
+/* ---------- nav ---------- */
+header.nav{position:fixed;top:0;inset-inline:0;z-index:50;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease);padding:20px 0}
+header.nav.scrolled{background:rgba(27,35,32,.82);backdrop-filter:blur(14px);padding:12px 0;border-bottom:1px solid rgba(231,173,114,.14)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mark{width:48px;height:48px;display:grid;place-items:center;flex-shrink:0}
+.brand .mark img{width:100%;height:100%;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:15px;font-weight:500;color:var(--cream);opacity:.85;transition:opacity .2s,color .2s;position:relative}
+.nav-links a:hover{opacity:1;color:var(--sand)}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;inset-inline-end:0;height:2px;width:0;background:var(--sand);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:none;color:var(--cream);cursor:pointer}
+.nav-toggle svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;padding-top:clamp(100px,14vh,140px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,80px);align-items:center;width:100%;min-height:calc(100svh - clamp(100px,14vh,140px))}
+.hero-copy{position:relative;z-index:3;align-self:center}
+.hero-eyebrow{display:inline-block;font-size:13px;font-weight:800;color:var(--sand);letter-spacing:2px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;margin-bottom:26px}
+.hero h1{font-weight:900;color:var(--white);font-size:clamp(52px,8.5vw,128px);line-height:.86;letter-spacing:-3px;margin-bottom:24px}
+.hero h1 .accent{color:var(--sand)}
+.hero-role{font-family:'Anton',sans-serif;font-size:clamp(15px,1.6vw,20px);letter-spacing:3px;color:var(--cream);opacity:.7;margin-bottom:22px}
+.hero-sub{max-width:520px;font-size:clamp(16px,1.9vw,20px);color:rgba(246,237,225,.85);font-weight:300;margin-bottom:36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+/* figure: cutout on a sand color-block */
+.hero-figure{position:relative;z-index:2;align-self:end;display:flex;align-items:flex-end;justify-content:center}
+.hero-disc{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;width:min(46vh,440px);height:min(46vh,440px);border-radius:50%;background:var(--sand)}
+.hero-portrait{position:relative;z-index:1;height:calc(100svh - clamp(100px,14vh,140px));width:auto;filter:drop-shadow(0 30px 55px rgba(0,0,0,.5))}
+.hero-portrait img{height:100%;width:auto;object-fit:contain;display:block}
+
+/* ---------- marquee (disciplines) ---------- */
+.marquee{background:var(--sand);color:var(--forest);overflow:hidden;padding:18px 0;border-block:2px solid var(--forest)}
+.marquee-track{display:flex;gap:56px;white-space:nowrap;width:max-content;animation:scroll 28s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(50%)}}
+.marquee-track span{font-weight:900;font-size:24px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:16px}
+.marquee-track span::after{content:"";width:11px;height:11px;background:var(--forest);border-radius:50%;transform:rotate(45deg)}
+
+/* ---------- story / bio (section 2) ---------- */
+.story{padding:clamp(90px,12vw,150px) 0;background:var(--forest)}
+.story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,5vw,72px);align-items:center}
+.story-photo{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  background:radial-gradient(circle at 50% 26%,rgba(231,173,114,.2),var(--moss) 70%)}
+.story-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .8s var(--ease)}
+.story-photo:hover img{transform:scale(1.05)}
+.sec-tag{font-size:13px;font-weight:800;color:var(--sand);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-tag::before{content:"";width:40px;height:2px;background:var(--sand)}
+.story h2{font-size:clamp(30px,4.4vw,56px);line-height:1.06;font-weight:900;color:var(--white);letter-spacing:-1px;margin-bottom:22px}
+.story h2 em{color:var(--sand);font-style:normal}
+.story p{font-size:clamp(16px,1.6vw,18px);color:rgba(246,237,225,.8);font-weight:300;margin-bottom:18px;max-width:560px}
+.story-stats{display:flex;gap:clamp(20px,4vw,52px);margin-top:38px;flex-wrap:wrap}
+.story-stats .num{font-family:'Anton',sans-serif;font-size:clamp(30px,4.5vw,52px);color:var(--sand);line-height:1;white-space:nowrap}
+.story-stats .lbl{font-size:14px;color:rgba(246,237,225,.7);margin-top:8px}
+
+/* ---------- philosophy statement ---------- */
+.philosophy{padding:clamp(90px,13vw,160px) 0;background:var(--moss)}
+.philosophy blockquote{max-width:1000px;margin:0 auto;text-align:center}
+.philosophy .q{font-size:clamp(26px,4.4vw,58px);line-height:1.28;font-weight:800;color:var(--white);letter-spacing:-1px}
+.philosophy .q b{color:var(--sand);font-weight:800}
+.philosophy figcaption{margin-top:34px;font-size:15px;font-weight:700;letter-spacing:1px;color:rgba(253,251,247,.75)}
+.philosophy figcaption span{color:var(--sand)}
+
+/* ---------- specialties (list, section 4) ---------- */
+.spec{padding:clamp(90px,12vw,150px) 0;background:var(--ink)}
+.spec-head{margin-bottom:clamp(30px,4vw,48px);max-width:640px}
+.spec-head h2{font-size:clamp(30px,4.6vw,60px);line-height:1.02;font-weight:900;color:var(--white);letter-spacing:-1px}
+.slist{list-style:none;border-top:1px solid rgba(231,173,114,.18)}
+.srow{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,3vw,32px);align-items:center;padding:clamp(26px,3.2vw,36px) 8px;border-bottom:1px solid rgba(231,173,114,.18);transition:background .3s,padding .35s var(--ease)}
+.srow:hover{background:rgba(63,99,86,.32);padding-inline:24px}
+.s-ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:rgba(231,173,114,.13);border:1px solid rgba(231,173,114,.4);flex-shrink:0}
+.s-ico svg{width:24px;height:24px;stroke:var(--sand);fill:none;stroke-width:1.9}
+.s-txt h3{font-size:clamp(20px,2.6vw,30px);font-weight:800;color:var(--white);line-height:1.2}
+.s-txt p{font-size:15px;color:rgba(246,237,225,.72);font-weight:300;margin-top:6px;max-width:560px}
+.s-arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(231,173,114,.5);display:grid;place-items:center;color:var(--sand);flex-shrink:0;transition:background .3s,color .3s,transform .35s var(--ease)}
+.srow:hover .s-arrow{background:var(--sand);color:var(--forest);transform:rotate(-45deg)}
+.s-arrow svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* ---------- certificates (expanding accordion; scroll on mobile only) ---------- */
+.gallery{padding:clamp(80px,11vw,140px) 0;background:var(--forest)}
+.gallery h2{font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--white);letter-spacing:-1px;margin-bottom:clamp(14px,2vw,20px)}
+.gallery .lead{color:rgba(246,237,225,.72);font-size:16px;font-weight:300;max-width:560px;margin-bottom:clamp(30px,4vw,46px)}
+.acc{display:flex;gap:14px;height:clamp(320px,50vh,500px)}
+.acc-item{position:relative;flex:1;min-width:0;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:flex .6s var(--ease)}
+.acc-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.2) brightness(.72);transition:transform .8s var(--ease),filter .5s var(--ease)}
+.acc-item::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,25,23,.62),transparent 60%);opacity:.85;transition:opacity .5s;z-index:1}
+.acc-item.is-open{flex:5}
+.acc:hover .acc-item{flex:1}
+.acc .acc-item:hover{flex:5}
+.acc .acc-item:hover img,.acc-item.is-open img{filter:none;transform:scale(1.04)}
+.acc .acc-item:hover::after,.acc-item.is-open::after{opacity:.55}
+.acc-cap{position:absolute;inset-inline:0;bottom:0;z-index:2;padding:24px;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none;white-space:normal}
+.acc .acc-item:hover .acc-cap,.acc-item.is-open .acc-cap{opacity:1;transform:none}
+.acc-cap .yr{font-family:'Anton',sans-serif;font-size:16px;color:var(--sand);letter-spacing:1px;display:block;margin-bottom:8px}
+.acc-cap .ti{font-size:clamp(18px,1.8vw,23px);font-weight:800;color:var(--white);line-height:1.3}
+.acc-cap .su{font-size:14px;color:rgba(246,237,225,.78);font-weight:300;margin-top:5px}
+
+/* ---------- testimonials (video) ---------- */
+.tst{padding:clamp(90px,12vw,150px) 0;background:var(--ink)}
+.tst-head{max-width:620px;margin-bottom:clamp(40px,5vw,58px)}
+.tst-head h2{font-size:clamp(28px,4.4vw,56px);line-height:1.04;font-weight:900;color:var(--white);letter-spacing:-1px;margin-bottom:14px}
+.tst-head p{color:rgba(246,237,225,.72);font-size:16px;font-weight:300}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tcard{display:flex;flex-direction:column;gap:16px}
+.tvid{position:relative;aspect-ratio:9/16;border-radius:var(--radius);overflow:hidden;background:#000;border:1.5px solid rgba(231,173,114,.16);transition:border-color .3s,transform .4s var(--ease)}
+.tcard:hover .tvid{border-color:rgba(231,173,114,.45);transform:translateY(-6px)}
+.tvid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.tvid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:66px;height:66px;border-radius:50%;border:none;padding:0;cursor:pointer;display:grid;place-items:center;background:rgba(231,173,114,.92);transition:opacity .3s var(--ease),visibility .3s var(--ease),transform .3s var(--ease),background .25s}
+.tvid .play:hover{background:var(--sand);transform:translate(-50%,-50%) scale(1.08)}
+.tvid.playing .play{opacity:0;visibility:hidden;transform:translate(-50%,-50%) scale(.8)}
+.tvid .play svg{width:26px;height:26px;fill:var(--forest);margin-inline-start:3px}
+.tcap .name{font-size:17px;font-weight:800;color:var(--white)}
+.tcap .role{font-size:14px;color:rgba(246,237,225,.65);font-weight:300;margin-top:2px}
+
+/* ---------- cta ---------- */
+.cta{padding:clamp(80px,10vw,130px) 0;background:var(--ink)}
+.cta-box{position:relative;border-radius:34px;overflow:hidden;padding:clamp(50px,8vw,96px) clamp(30px,6vw,80px);background:var(--moss);text-align:center}
+.cta-box h2{font-size:clamp(32px,5.4vw,72px);font-weight:900;color:var(--white);line-height:1;letter-spacing:-1px;margin-bottom:20px}
+.cta-box h2 .accent{color:var(--sand)}
+.cta-box p{font-size:clamp(16px,1.8vw,19px);color:rgba(246,237,225,.85);font-weight:300;margin-bottom:34px;max-width:560px;margin-inline:auto}
+.cta-box .btn{justify-content:center}
+
+/* ---------- visit modal ---------- */
+.modal-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(15,18,17,.72);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-card{position:relative;width:100%;max-width:460px;text-align:center;background:var(--forest);border:1px solid rgba(231,173,114,.25);border-radius:26px;padding:clamp(34px,5vw,48px) clamp(24px,4vw,40px);box-shadow:0 40px 90px -30px rgba(0,0,0,.75);transform:translateY(18px) scale(.97);transition:transform .35s var(--ease)}
+.modal-overlay.open .modal-card{transform:none}
+.modal-close{position:absolute;top:16px;inset-inline-start:16px;width:38px;height:38px;border:none;cursor:pointer;border-radius:11px;display:grid;place-items:center;background:rgba(226,194,161,.1);color:var(--cream);transition:background .2s,color .2s}
+.modal-close:hover{background:var(--sand);color:var(--forest)}
+.modal-close svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2}
+.modal-icon{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;background:rgba(231,173,114,.13);border:1px solid rgba(231,173,114,.35)}
+.modal-icon svg{width:30px;height:30px;stroke:var(--sand);fill:none;stroke-width:1.8}
+.modal-card h3{font-size:clamp(21px,2.6vw,26px);font-weight:800;color:var(--white);margin-bottom:14px}
+.modal-card p{font-size:16px;color:rgba(246,237,225,.85);line-height:1.9;font-weight:300;margin-bottom:28px}
+.btn-map{display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%;cursor:pointer;font-family:inherit;font-weight:800;font-size:16px;padding:16px 26px;border-radius:99px;border:none;background:#e8862f;color:#fff;transition:transform .25s var(--ease),background .25s,box-shadow .25s;box-shadow:0 16px 40px -14px rgba(232,134,47,.6)}
+.btn-map:hover{background:#f2952f;transform:translateY(-2px);box-shadow:0 22px 50px -16px rgba(232,134,47,.75)}
+.btn-map svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ---------- footer ---------- */
+footer{background:var(--forest);padding:clamp(56px,7vw,80px) 0 36px;border-top:1px solid rgba(231,173,114,.14)}
+.foot-top{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:40px}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{color:rgba(246,237,225,.65);font-size:15px;max-width:320px;font-weight:300}
+.foot-contact{display:flex;flex-direction:column;gap:10px;font-size:15px;color:rgba(246,237,225,.75)}
+.foot-contact a:hover{color:var(--sand)}
+.foot-social{display:flex;gap:12px;margin-top:8px}
+.foot-social a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(226,194,161,.08);color:var(--cream);transition:background .25s,color .25s}
+.foot-social a:hover{background:var(--sand);color:var(--forest)}
+.foot-social svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
+.foot-bottom{padding-top:26px;border-top:1px solid rgba(231,173,114,.14);color:rgba(246,237,225,.5);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- mobile menu ---------- */
+.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+.mobile-menu.open{transform:none;visibility:visible}
+.mobile-menu a{font-size:28px;font-weight:800;color:var(--cream);padding:12px}
+.mobile-menu a:hover{color:var(--sand)}
+.mobile-close{position:absolute;top:24px;inset-inline-start:24px;background:none;border:none;color:var(--cream);cursor:pointer}
+.mobile-close svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:20px;align-items:center;min-height:0}
+  .hero{padding-top:clamp(110px,16vh,150px);padding-bottom:40px;text-align:center}
+  .hero-copy{order:2;align-self:auto}
+  .hero-figure{order:1;align-self:auto;min-height:0;height:min(46vh,420px)}
+  .hero-portrait{height:100%}
+  .hero-cta{justify-content:center}
+  .hero-eyebrow{margin-inline:auto}
+  .hero-sub{margin-inline:auto}
+  .hero-disc{width:min(34vh,300px);height:min(34vh,300px)}
+  .story-grid{grid-template-columns:1fr;gap:34px}
+  .story-photo{max-width:420px}
+  .tst-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .acc{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:8px;margin-inline:calc(-1 * clamp(20px,5vw,64px));padding-inline:clamp(20px,5vw,64px);-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+  .acc::-webkit-scrollbar{display:none}
+  .acc-item{flex:0 0 88%;aspect-ratio:3/2;height:auto;scroll-snap-align:center}
+  .acc-item img{filter:none}
+  .acc-item::after{opacity:.6}
+  .acc-cap{opacity:1;transform:none;padding:18px}
+  .acc:hover .acc-item,.acc .acc-item:hover,.acc-item.is-open{flex:0 0 88%}
+}
+@media(max-width:820px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+}
+@media(max-width:600px){
+  .tst-grid{grid-template-columns:1fr;max-width:420px;margin-inline:auto}
+  .srow{grid-template-columns:auto 1fr;gap:16px}
+  .s-arrow{display:none}
+}
+@media(max-width:520px){
+  .foot-top{flex-direction:column}
+  .story-stats{gap:14px}
+  .story-stats .num{font-size:clamp(26px,7.5vw,34px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="https://boulderland.ir" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+      <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="48" height="48" /></span>
+    </a>
+    <nav class="nav-links" aria-label="ناوبری اصلی">
+      <a href="#story">رزومه</a>
+      <a href="#spec">تخصص‌ها</a>
+      <a href="#gallery">مدارک</a>
+      <a href="#testimonials">نظرات</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a class="btn btn-primary" href="#" data-visit>
+        رزرو جلسه با علی
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو">
+        <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="بستن منو">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#story">رزومه</a>
+  <a href="#spec">تخصص‌ها</a>
+  <a href="#gallery">مدارک</a>
+  <a href="#testimonials">نظرات</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">مربی تخصصی کودک و بزرگسال</span>
+        <h1>علی<br><span class="accent">مقنی زاده</span></h1>
+        <p class="hero-sub"> بیش از ۱۰ سال کنار سنگ‌نوردها، از قدم اول تا سکوی قهرمانی.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#" data-visit>
+            رزرو جلسه با علی
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#story">مشاهده رزومه</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <span class="hero-disc" id="heroDisc"></span>
+        <div class="hero-portrait" id="heroPortrait">
+          <img src="https://boulderland.ir/wp-content/uploads/2026/09/coach-ali-moghani.webp" alt="علی مقنی زاده، مربی باشگاه بلدرلند" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>بولدرینگ</span><span>دیواره‌ی لید</span><span>آمادگی مسابقات</span><span>کودکان و نوجوانان</span><span>تکنیک صعود</span>
+    <span>بولدرینگ</span><span>دیواره‌ی لید</span><span>آمادگی مسابقات</span><span>کودکان و نوجوانان</span><span>تکنیک صعود</span>
+  </div>
+</div>
+
+<!-- ================= STORY / BIO (section 2) ================= -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-photo reveal">
+      <img src="https://boulderland.ir/wp-content/uploads/2026/09/InShot_۲۰۲۳۱۰۱۴_۲۱۵۷۳۱۱۲۱-scaled.jpg" alt="علی مقنی زاده، مربی باشگاه بلدرلند" />
+    </div>
+    <div class="reveal">
+      <div class="sec-tag">رزومه</div>
+      <h2>دانشِ بدن، تجربه‌ی <em>دیواره</em></h2>
+      <p>علی مقنی‌زاده با کارشناسی ارشد تربیت بدنی از دانشگاه تهران و بیش از ۱۰ سال سنگ‌نوردی، علم تمرین را با تجربه‌ی واقعی روی دیواره ترکیب می‌کند.</p>
+      <p>او مربی کودکان و بزرگسالان در بلدرلند است؛ با تمرکز بر تکنیک درست، آمادگی جسمانی اصولی و پیشرفت گام‌به‌گام هر هنرجو.</p>
+      <div class="story-stats">
+        <div><div class="num">۱۰+</div><div class="lbl">سال سنگ‌نوردی</div></div>
+        <div><div class="num">ارشد</div><div class="lbl">تربیت بدنی، تهران</div></div>
+        <div><div class="num">رسمی</div><div class="lbl">مربی کودک و بزرگسال</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="philosophy">
+  <div class="wrap reveal">
+    <blockquote>
+      <p class="q">باور من ساده است: هر سنگ‌نورد یک مسیر <b>منحصربه‌فرد</b> دارد. کار من پیدا کردن همان مسیر و همراهی تا <b>قله</b> است.</p>
+      <figcaption>علی مقنی زاده، <span>مربی بلدرلند</span></figcaption>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ================= SPECIALTIES ================= -->
+<section class="spec" id="spec">
+  <div class="wrap">
+    <div class="spec-head reveal">
+      <div class="sec-tag">حوزه‌های تخصص</div>
+      <h2>چیزی که کنار علی یاد می‌گیری</h2>
+    </div>
+    <ul class="slist reveal">
+      <li class="srow">
+        <span class="s-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 5-11 4 6 3-4 4 9"/><circle cx="9" cy="7" r="1.4"/></svg></span>
+        <div class="s-txt"><h3>بولدرینگ حرفه‌ای</h3><p>حل حرکت، قدرت انگشت و خواندن مسیرهای کوتاه و انفجاری، از مبتدی تا سطح مسابقه.</p></div>
+        <span class="s-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </li>
+      <li class="srow">
+        <span class="s-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="m5 9 7-7 7 7"/></svg></span>
+        <div class="s-txt"><h3>دیواره‌ی لید</h3><p>صعود با طناب و مدیریت ترس روی ارتفاع، برای رفتن به دیواره‌های بلند و مسیرهای بیرونی.</p></div>
+        <span class="s-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </li>
+      <li class="srow">
+        <span class="s-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg></span>
+        <div class="s-txt"><h3>آمادگی مسابقات</h3><p>برنامه‌ریزی اختصاصی برای روز رقابت، از تمرین قدرت تا تحلیل مسیر و مدیریت استرس مسابقه.</p></div>
+        <span class="s-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </li>
+      <li class="srow">
+        <span class="s-ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div class="s-txt"><h3>کودکان و نوجوانان</h3><p>پرورش نسل تازه‌ی سنگ‌نوردها با تمرین‌های بازی‌محور، ایمن و پرانرژی.</p></div>
+        <span class="s-arrow"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES (expanding accordion; scroll on mobile) ================= -->
+<!-- TODO: replace each image (src, horizontal/landscape) plus its year / title / subtitle with real certificates -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <h2 class="reveal">مدارک و افتخارات</h2>
+    <p class="lead reveal">گواهی‌نامه‌ها و دوره‌های تخصصی علی. روی هر کارت نگه‌دار تا جزئیاتش را ببینی.</p>
+    <div class="acc reveal">
+      <div class="acc-item is-open">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/09/ali-certificate3-1-scaled.png" alt="گواهی‌نامه‌ی علی مقنی زاده" />
+        <div class="acc-cap"><span class="yr">۱۳۹۸</span><div class="ti">مربیگری درجه ۱ سنگ‌نوردی</div><div class="su">فدراسیون کوه‌نوردی و صعودهای ورزشی</div></div>
+      </div>
+      <div class="acc-item">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/09/ali-certificate2-1.jpg" alt="گواهی‌نامه‌ی علی مقنی زاده" />
+        <div class="acc-cap"><span class="yr">۱۳۹۷</span><div class="ti">داوری مسابقات سنگ‌نوردی</div><div class="su">فدراسیون کوه‌نوردی و صعودهای ورزشی</div></div>
+      </div>
+      <div class="acc-item">
+        <img src="https://boulderland.ir/wp-content/uploads/2026/09/ali-certificate1-1.jpg" alt="گواهی‌نامه‌ی علی مقنی زاده" />
+        <div class="acc-cap"><span class="yr">۱۴۰۰</span><div class="ti">مربیگری تخصصی کودکان</div><div class="su">فدراسیون کوه‌نوردی و صعودهای ورزشی</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS (video) ================= -->
+<!-- TODO: set each <video src> to the real testimonial file, update poster + name/role -->
+<section class="tst" id="testimonials">
+  <div class="wrap">
+    <div class="tst-head reveal">
+      <h2>آنچه هنرجوها می‌گویند</h2>
+      <p>روایت کوتاه کسانی که مسیر سنگ‌نوردی‌شان را کنار علی شروع کردند.</p>
+    </div>
+    <div class="tst-grid reveal">
+      <div class="tcard">
+        <div class="tvid">
+          <video controls playsinline preload="none" poster="mammad.webp"> <source src="https://boulderland.ir/wp-content/uploads/2026/09/0911.mp4" type="video/mp4"> </video>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="tcap"><div class="name">پارسا رضایی</div><div class="role">ورزشکار بلدرلند</div></div>
+      </div>
+      <div class="tcard">
+        <div class="tvid">
+          <video controls playsinline preload="none" poster="boy.webp"><!-- <source src="testimonial-2.mp4" type="video/mp4"> --></video>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
+      </div>
+      <div class="tcard">
+        <div class="tvid">
+          <video controls playsinline preload="none" poster="kasra-2.webp"><!-- <source src="testimonial-3.mp4" type="video/mp4"> --></video>
+          <button class="play" type="button" aria-label="پخش ویدیو"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+        <div class="tcap"><div class="name">نام هنرجو</div><div class="role">هنرجوی بلدرلند</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>اولین جلسه‌ات را با <span class="accent">علی</span> شروع کن.</h2>
+      <p>یک جلسه، بدون هیچ تعهدی. با امکان اجاره‌ی تمام وسایل. فقط کافی است تماس بگیری.</p>
+      <a class="btn btn-primary" href="#" data-visit>
+        رزرو جلسه با علی
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="mark"><img src="logo.svg" alt="لوگوی بلدرلند" width="56" height="56" /></span>
+        </a>
+        <p>باشگاه سنگ‌نوردی بلدرلند، جایی که هر صعود یک قدم به سوی بهترین نسخه‌ی توست.</p>
+      </div>
+      <div class="foot-contact">
+        <span style="color:var(--sand);font-weight:700;margin-bottom:6px">تماس و رزرو</span>
+        <a href="tel:09125123870">۰۹۱۲۵۱۲۳۸۷۰</a>
+        <span>تهران، سعادت‌آباد، خیابان داوود رشیدی، مجموعه ورزشی بلدرلند</span>
+        <div class="foot-social">
+          <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="m22 3-20 8 6 2 2 6 3-4 5 4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© ۱۴۰۴ باشگاه سنگ‌نوردی بلدرلند. تمام حقوق محفوظ است.</span>
+      <a href="index.html">بازگشت به صفحه‌ی اصلی</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= VISIT MODAL ================= -->
+<div class="modal-overlay" id="visitModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="visitTitle">
+    <button class="modal-close" id="visitClose" aria-label="بستن">
+      <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <h3 id="visitTitle">تمرین با علی مقنی زاده</h3>
+    <p>برای تمرین با علی مقنی زاده و بازدید از سالن سنگ‌نوردی بلدرلند، شما می‌تونین روزهای فرد از ساعت ۹ صبح تا ۱۱ شب به ما سر بزنین.</p>
+    <a class="btn-map" href="https://maps.app.goo.gl/YWu2NyDTGdBJ7E9s7" target="_blank" rel="noopener">
+      مشاهده روی نقشه
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// mobile menu
+(()=>{
+  const mm=document.getElementById('mobileMenu');
+  const t=document.getElementById('navToggle'), c=document.getElementById('mobileClose');
+  if(!mm||!t||!c)return;
+  t.onclick=()=>mm.classList.add('open');
+  c.onclick=()=>mm.classList.remove('open');
+  mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+})();
+
+// reveal on scroll — sequence hierarchy
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.06)+'s';io.observe(el);});
+
+// hero depth — subtle parallax of portrait + disc (motivated: depth on the focal figure)
+(()=>{
+  const portrait=document.getElementById('heroPortrait');
+  const disc=document.getElementById('heroDisc');
+  if(!portrait||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  let ticking=false;
+  addEventListener('scroll',()=>{
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(()=>{
+      const y=Math.min(scrollY,700);
+      portrait.style.transform='translateY('+(y*0.06)+'px)';
+      if(disc)disc.style.transform='translate(-50%,-50%) translateY('+(y*-0.04)+'px)';
+      ticking=false;
+    });
+  },{passive:true});
+})();
+
+// visit modal — opens on any [data-visit] trigger
+(()=>{
+  const modal=document.getElementById('visitModal');
+  if(!modal)return;
+  const open=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';};
+  const close=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+  document.querySelectorAll('[data-visit]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();open();}));
+  document.getElementById('visitClose').addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal)close();});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+})();
+
+// testimonial videos — play button starts the video and hides while playing
+document.querySelectorAll('.tvid').forEach(tv=>{
+  const v=tv.querySelector('video'), btn=tv.querySelector('.play');
+  if(!v||!btn)return;
+  btn.addEventListener('click',()=>{v.play().catch(()=>{});});
+  v.addEventListener('play',()=>tv.classList.add('playing'));
+  v.addEventListener('pause',()=>tv.classList.remove('playing'));
+  v.addEventListener('ended',()=>tv.classList.remove('playing'));
+});
+</script>
+</body>
+</html>
