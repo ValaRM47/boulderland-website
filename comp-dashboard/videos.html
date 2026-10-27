@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ویدیو مسیرها | بلدرلند کاپ</title>
+<meta name="description" content="ویدیوی مسیرهای مسابقات سنگ‌نوردی بلدرلند کاپ بر اساس رده سنی و جنسیت." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --sand:#e7ad72; --forest:#3c4b48; --moss:#3f6356; --cream:#e2c2a1;
+  --ink:#202927; --white:#fdfbf7; --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1040px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--sand);color:var(--forest)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;top:0;inset-inline:0;z-index:50;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease);padding:20px 0}
+header.nav.scrolled{background:rgba(32,41,39,.85);backdrop-filter:blur(14px);padding:12px 0;border-bottom:1px solid rgba(231,173,114,.14)}
+.nav-inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:52px}
+.brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px}
+.brand .mark{width:50px;height:50px;display:grid;place-items:center;flex-shrink:0}
+.brand .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:12px 22px;border-radius:99px;transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+.btn-primary{background:var(--sand);color:var(--forest)}
+.btn-primary:hover{background:var(--cream);box-shadow:0 12px 30px -10px rgba(231,173,114,.6)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(231,173,114,.5)}
+.btn-ghost:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+@media(max-width:620px){
+  .nav-home{display:none}
+  .nav-inner{justify-content:center}
+  .brand{left:auto;right:clamp(20px,5vw,48px);transform:translateY(-50%)}
+  .nav-info{padding:11px 16px;font-size:14px}
+}
+
+/* ============ HERO (no image) ============ */
+.hero{position:relative;overflow:hidden;background:var(--ink);padding:clamp(118px,17vh,172px) 0 clamp(48px,8vw,80px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(55% 65% at 72% -5%,rgba(231,173,114,.16),transparent 60%),radial-gradient(48% 62% at 16% 12%,rgba(63,99,86,.5),transparent 66%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.6;background-image:linear-gradient(rgba(231,173,114,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(231,173,114,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%);mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--sand);letter-spacing:1px;margin-bottom:18px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-weight:900;color:var(--white);font-size:clamp(34px,6.5vw,72px);line-height:1;letter-spacing:-1px;margin-bottom:16px}
+.hero h1 .accent{color:var(--sand)}
+.hero p{max-width:560px;font-size:clamp(15px,2vw,18px);color:rgba(246,237,225,.85);font-weight:300}
+
+/* ============ CONTENT ============ */
+.content{padding:clamp(50px,8vw,90px) 0 clamp(60px,10vw,110px)}
+.crumbs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px;min-height:34px}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;padding:8px 16px;border-radius:99px;cursor:pointer;background:var(--sand);color:var(--forest);border:none;font-family:inherit;transition:background .2s,transform .2s}
+.crumb:hover{background:var(--cream);transform:translateY(-1px)}
+.crumb svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.6}
+
+.step{background:var(--forest);border:1px solid rgba(231,173,114,.16);border-radius:var(--radius);padding:clamp(28px,5vw,48px);max-width:720px;margin:0 auto}
+.step-q{font-size:clamp(20px,3vw,30px);font-weight:900;color:var(--white);text-align:center;margin-bottom:clamp(24px,4vw,36px);letter-spacing:-.5px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.choice{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;background:var(--ink);border:1px solid rgba(231,173,114,.18);border-radius:16px;padding:clamp(20px,3vw,28px) clamp(18px,3vw,26px);color:var(--white);font-family:inherit;font-weight:800;font-size:clamp(17px,2.2vw,22px);text-align:right;transition:transform .25s var(--ease),border-color .25s,background .25s}
+.choice:hover{transform:translateY(-4px);border-color:var(--sand);background:#1f2a27}
+.choice .ar{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;border:1.5px solid rgba(231,173,114,.4);color:var(--sand);transition:background .25s,color .25s,transform .25s var(--ease)}
+.choice:hover .ar{background:var(--sand);color:var(--forest);transform:rotate(-45deg)}
+.choice .ar svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* results / videos */
+.result{max-width:820px;margin:0 auto}
+.result-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.result-cat{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:13px;font-weight:800;padding:7px 16px;border-radius:99px}
+.tag-cat{background:var(--sand);color:var(--forest)}
+.tag-g{background:rgba(231,173,114,.12);color:var(--sand);border:1px solid rgba(231,173,114,.3)}
+.seg{display:inline-flex;background:var(--ink);border:1px solid rgba(231,173,114,.2);border-radius:99px;padding:4px}
+.seg button{border:none;background:transparent;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;color:rgba(246,237,225,.7);padding:9px 20px;border-radius:99px;transition:background .25s,color .25s}
+.seg button.on{background:var(--sand);color:var(--forest)}
+
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.vcard{display:flex;flex-direction:column;gap:14px}
+.vwrap{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:1px solid rgba(231,173,114,.16);transition:border-color .3s,transform .35s var(--ease)}
+.vcard:hover .vwrap{border-color:rgba(231,173,114,.45);transform:translateY(-4px)}
+.vwrap video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.vplay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:62px;height:62px;border-radius:50%;border:none;padding:0;cursor:pointer;display:grid;place-items:center;background:rgba(231,173,114,.92);transition:opacity .3s var(--ease),visibility .3s var(--ease),transform .3s var(--ease),background .25s}
+.vplay:hover{background:var(--sand);transform:translate(-50%,-50%) scale(1.08)}
+.vwrap.playing .vplay{opacity:0;visibility:hidden;transform:translate(-50%,-50%) scale(.8)}
+.vplay svg{width:24px;height:24px;fill:var(--forest);margin-inline-start:3px}
+.vph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;color:rgba(246,237,225,.5);
+  background:repeating-linear-gradient(135deg,rgba(231,173,114,.04) 0 14px,transparent 14px 28px),var(--forest)}
+.vph svg{width:34px;height:34px;stroke:var(--sand);fill:none;stroke-width:1.6;opacity:.8}
+.vph span{font-size:13.5px;font-weight:600}
+.vtitle{font-size:16px;font-weight:800;color:var(--white);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.vtitle .n{font-family:'Anton',sans-serif;color:var(--sand);font-size:15px}
+.result-foot{margin-top:28px;display:flex;justify-content:center}
+.btn-back{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(231,173,114,.4);color:var(--cream);font-family:inherit;font-weight:700;font-size:14px;padding:11px 22px;border-radius:99px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn-back:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+.btn-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* footer */
+footer{background:var(--forest);padding:clamp(44px,6vw,64px) 0 32px;border-top:1px solid rgba(231,173,114,.14);margin-top:20px}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.foot-inner .brand{position:static;transform:none}
+.foot-inner .brand .mark{width:56px;height:56px}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(226,194,161,.08);color:var(--cream);transition:background .25s,color .25s}
+.foot-social a:hover{background:var(--sand);color:var(--forest)}
+.foot-social svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
+.foot-bottom{padding-top:22px;border-top:1px solid rgba(231,173,114,.14);color:rgba(246,237,225,.55);font-size:13.5px;text-align:center}
+
+@media(max-width:620px){
+  .choices{grid-template-columns:1fr}
+  .vgrid{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+  .result-head{flex-direction:column;align-items:stretch}
+  .seg{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="btn btn-ghost nav-home" href="https://boulderland.ir" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <span class="lbl">وبسایت بلدرلند</span>
+    </a>
+    <a href="index.html" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+      <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="50" height="50" /></span>
+    </a>
+    <a class="btn btn-primary nav-info" href="index.html">
+      اطلاعات مسابقه
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> بلدرلند کاپ ۱۴۰۴</span>
+    <h1>ویدیو <span class="accent">مسیرها</span></h1>
+    <p>رده سنی را انتخاب کن تا ویدیوی مسیرهای آن رده را ببینی.</p>
+  </div>
+</section>
+
+<!-- ============ CONTENT ============ -->
+<section class="content">
+  <div class="wrap">
+    <nav class="crumbs" id="crumbs" aria-label="مسیر انتخاب"></nav>
+    <div id="view"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a href="index.html" class="brand">
+        <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="56" height="56" /></span>
+      </a>
+      <div class="foot-social">
+        <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="m22 3-20 8 6 2 2 6 3-4 5 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">© ۱۴۰۴ باشگاه سنگ‌نوردی بلدرلند — ویدیو مسیرهای بلدرلند کاپ.</div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+/* ============================================================
+   Route videos — paste each real video URL (mp4) in "src".
+   Leave src empty ('') to show a "coming soon" placeholder.
+   ============================================================ */
+const ROUTE_VIDEOS = {
+  'نونهالان':{
+    'پسران':[ {title:'مسیر مقدماتی', src:''}, {title:'مسیر فینال', src:''} ],
+    'دختران':[ {title:'مسیر مقدماتی', src:''}, {title:'مسیر فینال', src:''} ],
+  },
+  'نوجوانان':{
+    'پسران':[ {title:'مسیر مقدماتی', src:''}, {title:'مسیر فینال', src:''} ],
+    'دختران':[ {title:'مسیر مقدماتی', src:''}, {title:'مسیر فینال', src:''} ],
+  },
+};
+
+/* ============================================================
+   Wizard: رده سنی  →  video view (gender toggle + 2 videos)
+   ============================================================ */
+const state = { group:null, gender:'پسران' };
+let step = 0;   // 0 = group · 1 = videos
+const view = document.getElementById('view');
+const crumbsEl = document.getElementById('crumbs');
+
+const chevron = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>';
+const playIco = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const toFa = n => String(n).replace(/\d/g, d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+
+function choiceCard(label, onClick){
+  const b = document.createElement('button');
+  b.className='choice';
+  b.innerHTML = '<span>'+label+'</span><span class="ar">'+chevron+'</span>';
+  b.addEventListener('click', onClick);
+  return b;
+}
+
+function render(){
+  renderCrumbs();
+  if(step===0){
+    const box=document.createElement('div'); box.className='step';
+    box.innerHTML='<div class="step-q">رده سنی را انتخاب کن</div>';
+    const grid=document.createElement('div'); grid.className='choices';
+    [['نونهالان'],['نوجوانان']].forEach(([g])=>{
+      grid.appendChild(choiceCard(g, ()=>{ state.group=g; step=1; render(); }));
+    });
+    box.appendChild(grid);
+    view.innerHTML=''; view.appendChild(box);
+  } else {
+    renderVideos();
+  }
+}
+
+function renderCrumbs(){
+  crumbsEl.innerHTML='';
+  if(step>=1){
+    const c=document.createElement('button');
+    c.className='crumb';
+    c.innerHTML = state.group + ' <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>';
+    c.addEventListener('click',()=>{ step=0; render(); });
+    crumbsEl.appendChild(c);
+  }
+}
+
+function renderVideos(){
+  const vids = ROUTE_VIDEOS[state.group][state.gender];
+  const box=document.createElement('div'); box.className='result';
+
+  const head=document.createElement('div'); head.className='result-head';
+  head.innerHTML =
+    '<div class="result-cat">'+
+      '<span class="tag tag-cat">'+state.group+'</span>'+
+      '<span class="tag tag-g">ویدیو مسیرها</span>'+
+    '</div>'+
+    '<div class="seg" role="tablist">'+
+      '<button data-g="پسران" class="'+(state.gender==='پسران'?'on':'')+'">پسران</button>'+
+      '<button data-g="دختران" class="'+(state.gender==='دختران'?'on':'')+'">دختران</button>'+
+    '</div>';
+  head.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{state.gender=b.dataset.g;render();}));
+  box.appendChild(head);
+
+  const grid=document.createElement('div'); grid.className='vgrid';
+  vids.forEach((v,i)=>{
+    const card=document.createElement('div'); card.className='vcard';
+    if(v.src){
+      card.innerHTML =
+        '<div class="vwrap">'+
+          '<video controls playsinline preload="none"><source src="'+v.src+'" type="video/mp4"></video>'+
+          '<button class="vplay" type="button" aria-label="پخش ویدیو">'+playIco+'</button>'+
+        '</div>'+
+        '<div class="vtitle"><span class="n">۰'+toFa(i+1)+'</span> '+v.title+'</div>';
+    } else {
+      card.innerHTML =
+        '<div class="vwrap"><div class="vph">'+
+          '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="m10 9 5 3-5 3z"/></svg>'+
+          '<span>ویدیو به‌زودی اضافه می‌شود</span>'+
+        '</div></div>'+
+        '<div class="vtitle"><span class="n">۰'+toFa(i+1)+'</span> '+v.title+'</div>';
+    }
+    grid.appendChild(card);
+  });
+  box.appendChild(grid);
+
+  const foot=document.createElement('div'); foot.className='result-foot';
+  foot.innerHTML='<button class="btn-back"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-7 3.3"/><path d="M3 4v4h4"/></svg> انتخاب رده‌ی دیگر</button>';
+  foot.querySelector('button').addEventListener('click',()=>{ step=0; state.group=null; render(); });
+  box.appendChild(foot);
+
+  view.innerHTML=''; view.appendChild(box);
+
+  // wire play buttons: click to play, hide while playing
+  box.querySelectorAll('.vwrap').forEach(w=>{
+    const v=w.querySelector('video'), btn=w.querySelector('.vplay');
+    if(!v||!btn)return;
+    btn.addEventListener('click',()=>{ v.play().catch(()=>{}); });
+    v.addEventListener('play',()=>w.classList.add('playing'));
+    v.addEventListener('pause',()=>w.classList.remove('playing'));
+    v.addEventListener('ended',()=>w.classList.remove('playing'));
+  });
+}
+
+render();
+</script>
+</body>
+</html>

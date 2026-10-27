@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>استارت‌لیست مسابقات | بلدرلند کاپ</title>
+<meta name="description" content="فهرست شروع (استارت‌لیست) مسابقات سنگ‌نوردی بلدرلند کاپ بر اساس رده سنی و جنسیت." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --sand:#e7ad72; --forest:#3c4b48; --moss:#3f6356; --cream:#e2c2a1;
+  --ink:#202927; --white:#fdfbf7; --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1040px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--sand);color:var(--forest)}
+.display{font-family:'Anton',sans-serif}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;top:0;inset-inline:0;z-index:50;transition:background .4s var(--ease),backdrop-filter .4s var(--ease),padding .4s var(--ease);padding:20px 0}
+header.nav.scrolled{background:rgba(32,41,39,.85);backdrop-filter:blur(14px);padding:12px 0;border-bottom:1px solid rgba(231,173,114,.14)}
+.nav-inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:52px}
+.brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px}
+.brand .mark{width:50px;height:50px;display:grid;place-items:center;flex-shrink:0}
+.brand .mark img{width:100%;height:100%;object-fit:contain;display:block}
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;font-family:inherit;font-weight:700;font-size:15px;padding:12px 22px;border-radius:99px;transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s;white-space:nowrap}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+.btn-primary{background:var(--sand);color:var(--forest)}
+.btn-primary:hover{background:var(--cream);box-shadow:0 12px 30px -10px rgba(231,173,114,.6)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(231,173,114,.5)}
+.btn-ghost:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+@media(max-width:620px){
+  .nav-home{display:none}
+  .nav-inner{justify-content:center}
+  .brand{left:auto;right:clamp(20px,5vw,48px);transform:translateY(-50%)}
+  .nav-info{padding:11px 16px;font-size:14px}
+}
+
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;background:var(--ink);padding:clamp(118px,17vh,172px) 0 clamp(48px,8vw,80px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(55% 65% at 72% -5%,rgba(231,173,114,.16),transparent 60%),radial-gradient(48% 62% at 16% 12%,rgba(63,99,86,.5),transparent 66%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.6;background-image:linear-gradient(rgba(231,173,114,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(231,173,114,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%);mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--sand);letter-spacing:1px;margin-bottom:18px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-weight:900;color:var(--white);font-size:clamp(34px,6.5vw,72px);line-height:1;letter-spacing:-1px;margin-bottom:16px}
+.hero h1 .accent{color:var(--sand)}
+.hero p{max-width:560px;font-size:clamp(15px,2vw,18px);color:rgba(246,237,225,.85);font-weight:300}
+
+/* ============ CONTENT ============ */
+.content{padding:clamp(50px,8vw,90px) 0 clamp(60px,10vw,110px)}
+
+/* breadcrumb */
+.crumbs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px;min-height:34px}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;padding:8px 16px;border-radius:99px;cursor:pointer;background:var(--sand);color:var(--forest);border:none;font-family:inherit;transition:background .2s,transform .2s}
+.crumb:hover{background:var(--cream);transform:translateY(-1px)}
+.crumb svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.6}
+
+/* wizard step */
+.step{background:var(--forest);border:1px solid rgba(231,173,114,.16);border-radius:var(--radius);
+  padding:clamp(28px,5vw,48px);max-width:720px;margin:0 auto}
+.step-q{font-size:clamp(20px,3vw,30px);font-weight:900;color:var(--white);text-align:center;margin-bottom:clamp(24px,4vw,36px);letter-spacing:-.5px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.choice{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;background:var(--ink);
+  border:1px solid rgba(231,173,114,.18);border-radius:16px;padding:clamp(20px,3vw,28px) clamp(18px,3vw,26px);color:var(--white);
+  font-family:inherit;font-weight:800;font-size:clamp(17px,2.2vw,22px);text-align:right;
+  transition:transform .25s var(--ease),border-color .25s,background .25s}
+.choice:hover{transform:translateY(-4px);border-color:var(--sand);background:#1f2a27}
+.choice .ar{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+  border:1.5px solid rgba(231,173,114,.4);color:var(--sand);transition:background .25s,color .25s,transform .25s var(--ease)}
+.choice:hover .ar{background:var(--sand);color:var(--forest);transform:rotate(-45deg)}
+.choice .ar svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2}
+.back-row{display:flex;justify-content:center;margin-top:26px}
+.btn-back{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid rgba(231,173,114,.4);
+  color:var(--cream);font-family:inherit;font-weight:700;font-size:14px;padding:11px 22px;border-radius:99px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn-back:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+.btn-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* results */
+.result{max-width:760px;margin:0 auto}
+.result-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.result-cat{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:13px;font-weight:800;padding:7px 16px;border-radius:99px}
+.tag-cat{background:var(--sand);color:var(--forest)}
+.tag-g{background:rgba(231,173,114,.12);color:var(--sand);border:1px solid rgba(231,173,114,.3)}
+.seg{display:inline-flex;background:var(--ink);border:1px solid rgba(231,173,114,.2);border-radius:99px;padding:4px}
+.seg button{border:none;background:transparent;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;
+  color:rgba(246,237,225,.7);padding:9px 20px;border-radius:99px;transition:background .25s,color .25s}
+.seg button.on{background:var(--sand);color:var(--forest)}
+.result-count{font-size:13.5px;color:rgba(246,237,225,.6);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.result-count .dot{width:8px;height:8px;border-radius:50%;background:var(--sand)}
+
+.sl-table{width:100%;border-collapse:collapse;background:var(--forest);border-radius:18px;overflow:hidden;border:1px solid rgba(231,173,114,.14)}
+.sl-table thead th{background:rgba(231,173,114,.1);color:var(--sand);font-size:12.5px;font-weight:800;letter-spacing:.5px;
+  text-transform:uppercase;padding:16px 20px;text-align:right;border-bottom:1px solid rgba(231,173,114,.2)}
+.sl-table th.c-idx,.sl-table th.c-num,.sl-table td.c-idx,.sl-table td.c-num{text-align:center}
+.sl-table tbody td{padding:15px 20px;border-bottom:1px solid rgba(231,173,114,.1);font-size:15.5px}
+.sl-table tbody tr:last-child td{border-bottom:none}
+.sl-table tbody tr{transition:background .2s}
+.sl-table tbody tr:hover{background:rgba(63,99,86,.4)}
+.sl-table .c-idx{width:70px;color:var(--sand);font-weight:800;font-family:'Anton',sans-serif;font-size:16px}
+.sl-table .c-name{color:var(--white);font-weight:700}
+.sl-table .c-num{width:110px;color:var(--cream);font-variant-numeric:tabular-nums;font-weight:700;direction:ltr}
+.empty{padding:40px;text-align:center;color:rgba(246,237,225,.55)}
+.result-foot{margin-top:24px;display:flex;justify-content:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--forest);padding:clamp(44px,6vw,64px) 0 32px;border-top:1px solid rgba(231,173,114,.14);margin-top:20px}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.foot-inner .brand{position:static;transform:none}
+.foot-inner .brand .mark{width:56px;height:56px}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(226,194,161,.08);color:var(--cream);transition:background .25s,color .25s}
+.foot-social a:hover{background:var(--sand);color:var(--forest)}
+.foot-social svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2}
+.foot-bottom{padding-top:22px;border-top:1px solid rgba(231,173,114,.14);color:rgba(246,237,225,.55);font-size:13.5px;text-align:center}
+
+@media(max-width:560px){
+  .choices{grid-template-columns:1fr}
+  .result-head{flex-direction:column;align-items:stretch}
+  .seg{justify-content:center}
+  .sl-table thead th,.sl-table tbody td{padding:13px 12px;font-size:14px}
+  .sl-table .c-idx{width:48px}
+  .sl-table .c-num{width:80px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="btn btn-ghost nav-home" href="https://boulderland.ir" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <span class="lbl">وبسایت بلدرلند</span>
+    </a>
+    <a href="index.html" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+      <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="50" height="50" /></span>
+    </a>
+    <a class="btn btn-primary nav-info" href="index.html">
+      اطلاعات مسابقه
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> بلدرلند کاپ ۱۴۰۴</span>
+    <h1>استارت‌<span class="accent">لیست</span> مسابقات</h1>
+    <p>دور، رده و جنسیت را انتخاب کن تا فهرست شروع آن گروه را ببینی.</p>
+  </div>
+</section>
+
+<!-- ============ CONTENT ============ -->
+<section class="content">
+  <div class="wrap">
+    <nav class="crumbs" id="crumbs" aria-label="مسیر انتخاب"></nav>
+    <div id="view"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a href="index.html" class="brand">
+        <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="56" height="56" /></span>
+      </a>
+      <div class="foot-social">
+        <a href="#" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="تلگرام"><svg viewBox="0 0 24 24" stroke-linejoin="round"><path d="m22 3-20 8 6 2 2 6 3-4 5 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">© ۱۴۰۴ باشگاه سنگ‌نوردی بلدرلند — استارت‌لیست مسابقات بلدرلند کاپ.</div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+/* ============================================================
+   Sample data — replace names/numbers with the real start lists.
+   ============================================================ */
+const BOYS=['آرش رضایی','پارسا محمدی','کیان حسینی','سامان کریمی','امیرعلی نوری','بردیا شریفی','رادین موسوی','سبحان اکبری','هومن صادقی','آرمین جعفری','مانی رحیمی','یاسین قاسمی','بنیامین کاظمی','آروین فتحی','پوریا زارع','طاها احمدی','نیما بهرامی','سپهر عباسی','ماهان یوسفی','کسری دهقان','آیهان مرادی','رهام سلطانی','دانیال فرهادی','اهورا نجفی'];
+const GIRLS=['بهار کریمی','نیکی احمدی','هستی رضایی','آوا محمدی','ترنم حسینی','باران نوری','ریحانه موسوی','یلدا اکبری','درسا صادقی','ملینا جعفری','آیلین رحیمی','رها قاسمی','سارینا کاظمی','نفس فتحی','پرنیا زارع','کیانا احمدی','رزا بهرامی','دیبا عباسی','آناهیتا یوسفی','سوگند دهقان','ثنا مرادی','هلیا سلطانی','رومینا فرهادی','النا نجفی'];
+const CAT_ORDER=['نونهالان A','نونهالان B','نوجوانان C','نوجوانان D'];
+
+function listFor(round, cat, gender){
+  const pool = gender==='پسران' ? BOYS : GIRLS;
+  const ci = CAT_ORDER.indexOf(cat);
+  const offset = (ci*6 + (gender==='پسران'?0:3)) % pool.length;
+  const count = round==='مقدماتی' ? 9 : 6;
+  const bibBase = 100 + ci*40 + (gender==='پسران'?0:20);
+  const out=[];
+  for(let i=0;i<count;i++){
+    out.push({ name: pool[(offset+i)%pool.length], number: bibBase + i + 1 });
+  }
+  return out;
+}
+
+const toFa = n => String(n).replace(/\d/g, d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+
+/* ============================================================
+   Wizard
+   ============================================================ */
+const state = { round:'مقدماتی', group:null, age:null, gender:'پسران' };
+let step = 0;   // 0 round · 1 group · 2 age · 3 table (gender is a toggle on the table)
+const view = document.getElementById('view');
+const crumbsEl = document.getElementById('crumbs');
+
+const chevron = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>';
+
+function choiceCard(label, onClick){
+  const b = document.createElement('button');
+  b.className='choice';
+  b.innerHTML = '<span>'+label+'</span><span class="ar">'+chevron+'</span>';
+  b.addEventListener('click', onClick);
+  return b;
+}
+
+function renderStep(question, options){
+  const box = document.createElement('div');
+  box.className='step';
+  box.innerHTML = '<div class="step-q">'+question+'</div>';
+  const grid = document.createElement('div');
+  grid.className='choices';
+  options.forEach(o => grid.appendChild(choiceCard(o.label, o.onClick)));
+  box.appendChild(grid);
+  if(step>0){
+    const row=document.createElement('div');
+    row.className='back-row';
+    row.innerHTML='<button class="btn-back"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 19 7-7-7-7"/></svg> بازگشت</button>';
+    row.querySelector('button').addEventListener('click',()=>{ step=Math.max(0,step-1); if(step<2)state.age=null; if(step<1)state.group=null; render(); });
+    box.appendChild(row);
+  }
+  view.innerHTML=''; view.appendChild(box);
+}
+
+function render(){
+  renderCrumbs();
+  if(step===0){
+    renderStep('دور مسابقه را انتخاب کن', [
+      {label:'مقدماتی', onClick:()=>{state.round='مقدماتی';step=1;render();}},
+      {label:'فینال',   onClick:()=>{state.round='فینال';step=1;render();}},
+    ]);
+  } else if(step===1){
+    renderStep('رده‌ی سنی را انتخاب کن', [
+      {label:'نونهالان', onClick:()=>{state.group='نونهالان';state.age=null;step=2;render();}},
+      {label:'نوجوانان', onClick:()=>{state.group='نوجوانان';state.age=null;step=2;render();}},
+    ]);
+  } else if(step===2){
+    const opts = state.group==='نونهالان' ? ['A','B'] : ['C','D'];
+    renderStep('گروه سنی را انتخاب کن', opts.map(o=>({
+      label: state.group+' '+o,
+      onClick:()=>{state.age=o;step=3;render();}
+    })));
+  } else {
+    renderTable();
+  }
+}
+
+function renderCrumbs(){
+  const items=[];
+  if(step>=1) items.push({txt:state.round, to:0});
+  if(step>=2) items.push({txt:state.group, to:1});
+  if(step>=3 && state.age) items.push({txt:state.group+' '+state.age, to:2});
+  crumbsEl.innerHTML='';
+  items.forEach(it=>{
+    const c=document.createElement('button');
+    c.className='crumb';
+    c.innerHTML = it.txt + ' <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>';
+    c.addEventListener('click',()=>{ step=it.to; if(step<2)state.age=null; if(step<1)state.group=null; render(); });
+    crumbsEl.appendChild(c);
+  });
+}
+
+function renderTable(){
+  const cat = state.group+' '+state.age;
+  const rows = listFor(state.round, cat, state.gender);
+  const box=document.createElement('div');
+  box.className='result';
+
+  const head=document.createElement('div');
+  head.className='result-head';
+  head.innerHTML =
+    '<div class="result-cat">'+
+      '<span class="tag tag-cat">'+cat+'</span>'+
+      '<span class="tag tag-g">'+state.round+'</span>'+
+    '</div>'+
+    '<div class="seg" role="tablist">'+
+      '<button data-g="پسران" class="'+(state.gender==='پسران'?'on':'')+'">پسران</button>'+
+      '<button data-g="دختران" class="'+(state.gender==='دختران'?'on':'')+'">دختران</button>'+
+    '</div>';
+  head.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{state.gender=b.dataset.g;render();}));
+  box.appendChild(head);
+
+  const count=document.createElement('div');
+  count.className='result-count';
+  count.innerHTML='<span class="dot"></span> '+toFa(rows.length)+' شرکت‌کننده · '+state.gender;
+  box.appendChild(count);
+
+  let html='<table class="sl-table"><thead><tr>'+
+    '<th class="c-idx">ردیف</th><th class="c-name">نام و نام خانوادگی</th><th class="c-num">شماره</th>'+
+    '</tr></thead><tbody>';
+  if(!rows.length){
+    html+='<tr><td class="empty" colspan="3">فهرستی برای این گروه ثبت نشده است.</td></tr>';
+  } else {
+    rows.forEach((r,i)=>{
+      html+='<tr><td class="c-idx">'+toFa(i+1)+'</td><td class="c-name">'+r.name+'</td><td class="c-num">'+toFa(r.number)+'</td></tr>';
+    });
+  }
+  html+='</tbody></table>';
+  const tbl=document.createElement('div');
+  tbl.innerHTML=html;
+  box.appendChild(tbl.firstChild);
+
+  const foot=document.createElement('div');
+  foot.className='result-foot';
+  foot.innerHTML='<button class="btn-back"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-7 3.3"/><path d="M3 4v4h4"/></svg> انتخاب رده‌ی جدید</button>';
+  foot.querySelector('button').addEventListener('click',()=>{ step=1; state.group=null;state.age=null; render(); });
+  box.appendChild(foot);
+
+  view.innerHTML=''; view.appendChild(box);
+}
+
+render();
+</script>
+</body>
+</html>

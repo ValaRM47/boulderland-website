@@ -49,9 +49,9 @@ header.nav.scrolled{background:rgba(32,41,39,.85);backdrop-filter:blur(14px);pad
 }
 
 /* ============ HERO / HEADER ============ */
-.tt-hero{position:relative;min-height:56vh;display:flex;align-items:flex-end;padding:130px 0 56px;overflow:hidden}
-.tt-hero-img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center}
-.tt-hero-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(32,41,39,.96) 0%,rgba(32,41,39,.6) 55%,rgba(32,41,39,.7) 100%)}
+.tt-hero{position:relative;overflow:hidden;background:var(--ink);padding:clamp(118px,17vh,172px) 0 clamp(48px,8vw,80px)}
+.tt-hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(55% 65% at 72% -5%,rgba(231,173,114,.16),transparent 60%),radial-gradient(48% 62% at 16% 12%,rgba(63,99,86,.5),transparent 66%)}
+.tt-hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.6;background-image:linear-gradient(rgba(231,173,114,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(231,173,114,.05) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%);mask-image:radial-gradient(70% 75% at 50% 18%,#000,transparent 78%)}
 .tt-hero .wrap{position:relative;z-index:2;width:100%}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--sand);letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:pulse 2s infinite}
@@ -136,15 +136,15 @@ footer{background:var(--forest);padding:clamp(50px,7vw,80px) 0 34px;border-top:1
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="btn btn-ghost nav-home" href="/">
+    <a class="btn btn-ghost nav-home" href="https://boulderland.ir" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      <span class="nav-ghost-label">صفحه اصلی</span>
+      <span class="nav-ghost-label">وبسایت بلدرلند</span>
     </a>
-    <a href="/" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
+    <a href="index.html" class="brand" aria-label="بلدرلند، باشگاه سنگ‌نوردی">
       <span class="mark"><img src="https://boulderland.ir/wp-content/uploads/2026/07/logo.svg" alt="لوگوی بلدرلند" width="50" height="50" /></span>
     </a>
-    <a class="btn btn-primary nav-register" href="https://formafzar.com/form/zdynk" target="_blank" rel="noopener">
-      ثبت نام بلدرلند کاپ
+    <a class="btn btn-primary nav-register" href="index.html">
+      اطلاعات مسابقه
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
     </a>
   </div>
@@ -152,8 +152,6 @@ footer{background:var(--forest);padding:clamp(50px,7vw,80px) 0 34px;border-top:1
 
 <!-- ============ HEADER ============ -->
 <section class="tt-hero">
-  <img class="tt-hero-img" src="https://boulderland.ir/wp-content/uploads/2026/07/hero.webp" alt="دیواره سنگ‌نوردی بلدرلند" />
-  <div class="tt-hero-scrim"></div>
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span> بلدرلند کاپ</span>
     <h1>برنامه <span class="accent">زمانی</span> مسابقات</h1>
