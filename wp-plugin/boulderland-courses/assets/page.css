@@ -1,0 +1,90 @@
+/* page.css — full-page «دوره‌های بلدرلند» template (hero, stats, section head,
+   status filter, testimonials). The course cards + modal come from courses.css. */
+
+:root{
+  --sand:#e7ad72; --forest:#3c4b48; --moss:#3f6356; --cream:#e2c2a1;
+  --ink:#202927; --white:#fdfbf7; --radius:22px;
+  --ease:cubic-bezier(.22,1,.36,1); --maxw:1320px;
+}
+.blc-page-body{margin:0;background:var(--ink);color:var(--cream);font-family:'Vazirmatn',system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.blc-page-body *{box-sizing:border-box}
+.blc-page a{color:inherit;text-decoration:none}
+.blc-page img{display:block;max-width:100%}
+.blc-page ::selection{background:var(--sand);color:var(--forest)}
+.blc-page .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+.blc-page .display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px}
+.blc-page .reveal{opacity:0;transform:translateY(38px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.blc-page .reveal.in{opacity:1;transform:none}
+
+/* ============ HERO ============ */
+.blc-page .hero{position:relative;overflow:hidden;background:var(--ink);padding:clamp(70px,10vw,118px) 0 clamp(44px,7vw,74px)}
+.blc-page .hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(55% 65% at 76% -8%,rgba(231,173,114,.18),transparent 60%),radial-gradient(48% 62% at 12% 4%,rgba(63,99,86,.55),transparent 66%)}
+.blc-page .hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.6;background-image:linear-gradient(rgba(231,173,114,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(231,173,114,.05) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(72% 80% at 50% 14%,#000,transparent 82%);mask-image:radial-gradient(72% 80% at 50% 14%,#000,transparent 82%)}
+.blc-page .hero .wrap{position:relative;z-index:2;width:100%}
+.blc-page .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--sand);letter-spacing:1px;margin-bottom:20px;border:1px solid rgba(231,173,114,.4);padding:8px 18px;border-radius:99px;background:rgba(32,41,39,.4)}
+.blc-page .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sand);animation:blcpulse 2s infinite}
+@keyframes blcpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.blc-page .hero h1{font-weight:900;color:var(--white);font-size:clamp(42px,8vw,92px);line-height:1;letter-spacing:-1.5px;margin:0 0 18px}
+.blc-page .hero h1 .accent{color:var(--sand)}
+.blc-page .hero p{max-width:600px;font-size:clamp(16px,2vw,19px);color:rgba(246,237,225,.85);font-weight:300;margin:0}
+
+/* ============ STATS ============ */
+.blc-page .stats{padding:clamp(6px,2vw,18px) 0 clamp(30px,5vw,54px)}
+.blc-page .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blc-page .stat{background:var(--forest);border:1.5px solid rgba(231,173,114,.16);border-radius:var(--radius);padding:clamp(26px,3.4vw,38px) clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:8px;transition:transform .4s var(--ease),border-color .3s}
+.blc-page .stat:hover{transform:translateY(-6px);border-color:rgba(231,173,114,.5)}
+.blc-page .stat .num{display:flex;align-items:baseline;gap:6px;color:var(--sand);font-size:clamp(44px,6vw,70px);line-height:1}
+.blc-page .stat .num .plus{font-size:.5em;font-weight:700}
+.blc-page .stat .lbl{font-size:clamp(14px,1.6vw,17px);color:rgba(246,237,225,.82);font-weight:500}
+.blc-page .stat .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(231,173,114,.12);color:var(--sand);margin-bottom:6px}
+.blc-page .stat .ic svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ============ SECTION / BLOCKS ============ */
+.blc-page .block{padding:clamp(56px,8vw,112px) 0}
+.blc-page .block.forest{background:var(--forest)}
+.blc-page .block.moss{background:var(--moss)}
+.blc-page .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+.blc-page .sec-tag{font-size:14px;font-weight:700;color:var(--sand);letter-spacing:2px;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
+.blc-page .sec-tag::before{content:"";width:40px;height:2px;background:var(--sand)}
+.blc-page .sec-head h2{font-size:clamp(32px,5vw,64px);line-height:1;font-weight:900;color:var(--white);letter-spacing:-1px;margin:16px 0 0}
+.blc-page .sec-head .sh-l{max-width:640px}
+
+/* status filter */
+.blc-page .filter-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.blc-page .filter-bar label{font-size:14px;color:rgba(246,237,225,.7);font-weight:500}
+.blc-page .sel{position:relative}
+.blc-page .sel select{appearance:none;-webkit-appearance:none;font-family:inherit;font-weight:700;font-size:14.5px;color:var(--white);background:var(--ink);border:1.5px solid rgba(231,173,114,.3);border-radius:99px;padding:11px 44px 11px 20px;cursor:pointer;transition:border-color .25s}
+.blc-page .sel select:hover,.blc-page .sel select:focus{border-color:var(--sand);outline:none}
+.blc-page .sel svg{position:absolute;inset-inline-start:16px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--sand);fill:none;stroke-width:2.2;pointer-events:none}
+
+/* ============ TESTIMONIALS ============ */
+.blc-page .tsts{background:var(--moss)}
+.blc-page .tst-grid{display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding-inline:clamp(20px,5vw,64px);padding-top:14px;padding-bottom:18px;margin-inline:calc(-1 * clamp(20px,5vw,64px));padding-inline:clamp(20px,5vw,64px);-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;overscroll-behavior-x:contain;scrollbar-width:none}
+.blc-page .tst-grid::-webkit-scrollbar{display:none;width:0;height:0}
+.blc-page .tst{position:relative;flex:0 0 calc((100% - 48px)/3);scroll-snap-align:start;background:var(--forest);border:1.5px solid rgba(231,173,114,.16);border-radius:var(--radius);padding:clamp(26px,3vw,34px);display:flex;flex-direction:column;gap:16px;transition:transform .45s var(--ease),border-color .3s}
+.blc-page .tst:hover{transform:translateY(-8px);border-color:rgba(231,173,114,.4)}
+.blc-page .tst .quote-ic{width:38px;height:38px;color:var(--sand);opacity:.55}
+.blc-page .tst .quote-ic svg{width:100%;height:100%;fill:currentColor}
+.blc-page .tst .stars{display:flex;gap:4px}
+.blc-page .tst .stars svg{width:19px;height:19px}
+.blc-page .tst .stars .on{fill:var(--sand);stroke:var(--sand)}
+.blc-page .tst .stars .off{fill:none;stroke:rgba(246,237,225,.3)}
+.blc-page .tst .body{font-size:15.5px;color:rgba(246,237,225,.88);font-weight:300;line-height:1.95;flex:1}
+.blc-page .tst .who{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(231,173,114,.14);padding-top:18px}
+.blc-page .tst .avatar{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--sand);color:var(--forest);font-weight:900;font-size:18px}
+.blc-page .tst .who .name{font-size:16px;font-weight:800;color:var(--white)}
+.blc-page .tst .who .course-of{font-size:13px;color:var(--sand);font-weight:600;margin-top:2px}
+.blc-page .tst-nav{display:flex;gap:12px;margin-top:8px}
+.blc-page .tst-arrow{width:52px;height:52px;border-radius:50%;cursor:pointer;background:transparent;border:1.5px solid rgba(231,173,114,.5);color:var(--sand);display:grid;place-items:center;transition:background .25s,color .25s,border-color .25s,opacity .25s}
+.blc-page .tst-arrow:hover{background:var(--sand);color:var(--forest);border-color:var(--sand)}
+.blc-page .tst-arrow:disabled{opacity:.35;cursor:default}
+.blc-page .tst-arrow svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:980px){ .blc-page .stat-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:760px){ .blc-page .tst{flex:0 0 86%} }
+@media(max-width:620px){
+  .blc-page .stat-grid{grid-template-columns:1fr}
+  .blc-page .sec-head{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){ .blc-page *{animation:none!important;transition:none!important} .blc-page .reveal{opacity:1;transform:none} }
